@@ -1,14 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
 *{
-    border: 1px solid red;
+    /* border: 1px solid red; */
     box-sizing: border-box !important;
     list-style-type: none;
     text-decoration: none;
 }
 
+
+
 p{
-    font-size: 13.4px;
+    font-size: 14px;
 }
 
 .headings, button{
@@ -21,10 +23,11 @@ button{
 
 body{
     font-family: "Inter", sans-serif;
+    color: #111111;
 }
 
 .container{
-    max-width: 80%;
+    max-width: 84%;
     margin: 0 auto;
 }
 

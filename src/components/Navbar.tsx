@@ -2,7 +2,6 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X, User, Briefcase } from "lucide-react";
-// import { Button } from "@/components/ui/button";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -14,13 +13,15 @@ const Navbar = () => {
 
   return (
     <nav className="sticky top-0 z-50 w-full bg-white/80 backdrop-blur-md border-b border-gray-100">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="container mx-auto">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2">
-            <span className="text-2xl font-bold text-careersng-navy">
-              Careers<span className="text-careersng-purple">NG</span>
-            </span>
+            <div className="text-2xl font-bold flex items-center text-careersng-navy">
+                <img src="../../Images/logo.png" alt="" className="w-10" />
+                <h1 className="text-2xl font-bold text-careersng-navy">Careers<span className="text-[#F25A29]">NG</span></h1>
+              
+            </div>
           </Link>
 
           {/* Desktop Navigation */}
@@ -102,7 +103,7 @@ const Navbar = () => {
             </Link>
             <div className="pt-4 flex flex-col space-y-3">
               <Link to="/login">
-                <button variant="outline" className="w-full justify-center">
+                <button  className="w-full justify-center">
                   Log In
                 </button>
               </Link>
