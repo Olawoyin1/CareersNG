@@ -22,7 +22,7 @@ const SearchBar = ({ onSearch, className = "" }: SearchBarProps) => {
   const [isOpen, setIsOpen] = useState(false)
   const [keyword, setKeyword] = useState("");
   const [location, setLocation] = useState("");
-  const [jobType, setJobType] = useState("");
+  const [jobType, _setJobType] = useState("");
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
