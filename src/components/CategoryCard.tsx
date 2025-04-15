@@ -10,7 +10,7 @@ interface CategoryCardProps {
   color?: string;
 }
 
-const CategoryCard = ({ title, icon, jobCount, slug, color = "bg-careersng-purple/10" }: CategoryCardProps) => {
+const CategoryCard = ({ title, icon, jobCount, slug, }: CategoryCardProps) => {
   return (
     <Link 
       to={`/categories/${slug}`} 
@@ -18,7 +18,7 @@ const CategoryCard = ({ title, icon, jobCount, slug, color = "bg-careersng-purpl
     >
       <div className=" h-full bg-gray-400/4 transition-all duration-300 group-hover:translate-y-[-5px]">
         <div className="p-6 flex flex-col ">
-          <div className={`w-10 h-10 ${color} rounded-full flex items-center justify-center mb-4 text-careersng-purple`}>
+          <div className={`w-10 h-10 bg-white rounded-xl flex items-center justify-center mb-4 text-careersng-purple`}>
             {icon}
           </div>
           <h3 className="text-lg font-medium text-careersng-navy mb-1">{title}</h3>

@@ -16,6 +16,7 @@ import SearchBar from "../components/SearchBar";
 import JobCard from "../components/JobCard";
 import CategoryCard from "../components/CategoryCard";
 import TestimonialCard from "../components/TestimonialCard";
+import HowItWorks from "../components/HowItWorks";
 
 // Mock data for featured jobs
 const featuredJobs = [
@@ -173,9 +174,9 @@ const Home = () => {
       <section className="bg-[#242935] from-careersng-navy to-careersng-navy/90 text-white py-16 md:py-24">
         <div className="container mx-auto">
           <div className="flex flex-col items-center text-center">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-6">
               Find Remote, Freelance & Internship <br className="hidden md:block" />
-              <span className="text-careersng-purple">Jobs in Nigeria</span>
+              <span className="text-[#ed9172]">Jobs in Nigeria</span>
             </h1>
             <p className="text-lg md:text-xl text-gray-300 mb-8 max-w-xl">
               CareersNG connects talented Nigerians with the best remote and flexible 
@@ -198,7 +199,7 @@ const Home = () => {
         <div className="container mx-auto">
           <div className="flex justify-between items-center mb-8">
             <h2 className="text-2xl md:text-3xl font-bold text-careersng-navy">Featured Jobs</h2>
-            <Link to="/jobs" className="text-careersng-purple hover:text-careersng-purple-dark font-medium flex items-center">
+            <Link to="/jobs" className="font-medium flex items-center">
               View All <ArrowRight size={16} className="ml-1" />
             </Link>
           </div>
@@ -229,7 +230,7 @@ const Home = () => {
           
           <div className="mt-12 text-center">
             <Link to="/categories">
-              <button  className="border-careersng-purple text-careersng-purple hover:bg-careersng-purple hover:text-white">
+              <button  className="text-white p-2 px-4 text-sm bg-[#ee774f]">
                 Browse All Categories
               </button>
             </Link>
@@ -238,19 +239,19 @@ const Home = () => {
       </section>
       
       {/* How It Works Section */}
-      {/* <section className="py-16 bg-gray-50">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-20 bg-gray-50">
+        <div className="container mx-auto">
           <HowItWorks />
           
           <div className="mt-12 text-center">
             <Link to="/signup">
-              <button className="bg-careersng-purple hover:bg-careersng-purple-dark text-white">
+              <button className="text-white p-2 px-4 text-sm bg-[#ee774f]">
                 Sign Up to Start Earning
               </button>
             </Link>
           </div>
         </div>
-      </section> */}
+      </section>
       
       {/* Testimonials Section */}
       <section className="py-16">

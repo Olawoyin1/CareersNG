@@ -32,7 +32,7 @@ const JobCard = ({
   featured 
 }: JobProps) => {
   return (
-    <div className={`card bg-white rounded-xl p-6 ${featured ? 'border-l-4 border-l-[#1743aa]' : ''}`}>
+    <div className={`card bg-white rounded-xl p-6 ${featured ? 'border-l-4 border-l-[#ee774f]' : ''}`}>
       <div className="flex items-start gap-4">
         {/* Company Logo */}
         <div className="flex-shrink-0 h-12 w-12 bg-gray-100 rounded-lg overflow-hidden flex items-center justify-center">

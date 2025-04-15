@@ -1,6 +1,7 @@
 import { Outlet } from 'react-router'
 import ScrollToTop from '../ScrollToTop'
 import Navbar from './Navbar'
+import Footer from './Footer'
 
 const SharedLayout = () => {
   return (
@@ -8,7 +9,7 @@ const SharedLayout = () => {
         <Navbar />
         <ScrollToTop />
         <Outlet />
-        {/* <Footer /> */}
+        <Footer />
     </div>
   )
 }
