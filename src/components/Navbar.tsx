@@ -15,29 +15,30 @@ const Navbar = () => {
     <nav className="sticky top-0 z-50 w-full bg-white/80 backdrop-blur-md border-b border-gray-100">
       <div className="container mx-auto">
         <div className="flex justify-between items-center h-16">
-          {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2">
-            <div className="text-2xl font-bold flex items-center text-careersng-navy">
-                <img src="../../Images/logo.png" alt="" className="w-10" />
-                <h1 className="text-2xl font-bold text-careersng-navy">Careers<span className="text-[#F25A29]">NG</span></h1>
+          <div className="flex gap-3">
+              {/* Logo */}
+              <Link to="/" className="flex items-center space-x-2">
+                <div className="text-2xl font-bold flex items-center text-careersng-navy">
+                    <img src="../../Images/logo.png" alt="" className="w-9" />
+                    <h1 className="text-xl font-extrabold text-careersng-navy">Careermatters<span className="text-[#F25A29]">NG</span></h1>
               
-            </div>
-          </Link>
-
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
-            <Link to="/jobs" className={`${isActive('/jobs')} hover:text-careersng-purple transition-colors`}>
-              Find Jobs
-            </Link>
-            <Link to="/categories" className={`${isActive('/categories')} hover:text-careersng-purple transition-colors`}>
-              Categories
-            </Link>
-            <Link to="/about" className={`${isActive('/about')} hover:text-careersng-purple transition-colors`}>
-              How It Works
-            </Link>
-            <Link to="/blog" className={`${isActive('/blog')} hover:text-careersng-purple transition-colors`}>
-              Blog
-            </Link>
+                </div>
+              </Link>
+              {/* Desktop Navigation */}
+              <div className="hidden md:flex items-center space-x-4">
+                <Link to="/jobs" className={`${isActive('/jobs')} hover:text-careersng-purple transition-colors`}>
+                  Find Jobs
+                </Link>
+                <Link to="/categories" className={`${isActive('/categories')} hover:text-careersng-purple transition-colors`}>
+                  Categories
+                </Link>
+                <Link to="/about" className={`${isActive('/about')} hover:text-careersng-purple transition-colors`}>
+                  How It Works
+                </Link>
+                <Link to="/blog" className={`${isActive('/blog')} hover:text-careersng-purple transition-colors`}>
+                  Blog
+                </Link>
+              </div>
           </div>
 
           {/* Authentication Buttons */}

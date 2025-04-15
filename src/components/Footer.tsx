@@ -18,12 +18,12 @@ const Footer = () => {
           {/* Logo and Description */}
           <div className="lg:col-span-2">
           <Link to="/" className="flex items-center space-x-2">
-            <div className="text-2xl font-bold flex items-center text-careersng-navy">
-                <img src="../../Images/logo.png" alt="" className="w-10" />
-                <h1 className="text-2xl font-bold text-careersng-navy">Careers<span className="text-[#F25A29]">NG</span></h1>
+                <div className="text-2xl font-bold flex items-center text-careersng-navy">
+                    <img src="../../Images/logo.png" alt="" className="w-9" />
+                    <h1 className="text-xl font-extrabold text-careersng-navy">Careermatters<span className="text-[#F25A29]">NG</span></h1>
               
-            </div>
-          </Link>
+                </div>
+              </Link>
             <p className="mt-4 text-gray-300 max-w-md">
               CareersNG connects Nigerian freelancers, remote workers, and internship 
               seekers with potential employers and clients. Find your next opportunity today.
@@ -124,7 +124,7 @@ const Footer = () => {
 
         <div className="mt-12 border-t border-gray-700 pt-8 text-center">
           <p className="text-gray-300">
-            &copy; {currentYear} CareersNG. All rights reserved.
+            &copy; {currentYear} CareersmattersNG. All rights reserved.
           </p>
         </div>
       </div>
