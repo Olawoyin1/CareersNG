@@ -255,7 +255,7 @@ const Home = () => {
       
       {/* Testimonials Section */}
       <section className="py-16">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="container mx-auto ">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-careersng-navy mb-4">Success Stories</h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
@@ -272,20 +272,20 @@ const Home = () => {
       </section>
       
       {/* CTA Section */}
-      <section className="py-16 bg-careersng-purple text-white">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <section className="py-16 bg-gray-900 text-white">
+        <div className="container mx-auto  text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to Start Your Journey?</h2>
           <p className="text-xl mb-8 max-w-2xl mx-auto">
             Join thousands of Nigerians finding rewarding opportunities and achieving career growth.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <Link to="/signup">
-              <button className="bg-white text-careersng-purple hover:bg-gray-100 hover:text-careersng-purple-dark">
+            <Link to="/register">
+              <button className="bg-white text-gray-900 p-3 text-sm hover:bg-gray-100 hover:text-careersng-purple-dark">
                 Create an Account
               </button>
             </Link>
-            <Link to="/about">
-              <button className="text-white border-white hover:bg-white/10">
+            <Link to="/">
+              <button className="text-white p-3 border text-sm border-white hover:bg-white/10">
                 Learn More
               </button>
             </Link>

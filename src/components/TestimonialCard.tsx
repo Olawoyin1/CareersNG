@@ -11,13 +11,13 @@ interface TestimonialProps {
 
 const TestimonialCard = ({ quote, name, role, company, avatarUrl }: TestimonialProps) => {
   return (
-    <div className="card p-6 h-full flex flex-col">
+    <div className="card p-6 h-full bg-green-200/9 rounded-xl flex flex-col">
       <div className="mb-4 text-careersng-purple/20">
         <Quote size={36} />
       </div>
       <p className="text-careersng-gray-dark flex-1 mb-6 italic">"{quote}"</p>
       <div className="flex items-center">
-        <div className="h-12 w-12 rounded-full overflow-hidden bg-gray-200 mr-4">
+        <div className="h-12 min-w-12 rounded-full overflow-hidden bg-gray-200 mr-4">
           {avatarUrl ? (
             <img src={avatarUrl} alt={name} className="h-full w-full object-cover" />
           ) : (

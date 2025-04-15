@@ -15,6 +15,7 @@ import SharedLayout from "./components/SharedLayout";
 import Home from "./pages/Home";
 import Register from "./pages/Register";
 import SignIn from "./pages/SignIn";
+import Blog from "./pages/Blog";
 
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
           <Route path="*" element={<ErrorPage />} />
   
           <Route path="/jobs" element={<Jobs />} />
+          <Route path="/blog" element={<Blog />} />
           <Route path="/register" element={<Register />} />/
           <Route path="/login" element={<SignIn />} />
         </Route>
