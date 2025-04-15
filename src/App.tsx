@@ -13,6 +13,8 @@ import { Toaster } from 'sonner';
 import Jobs from "./pages/Jobs";
 import SharedLayout from "./components/SharedLayout";
 import Home from "./pages/Home";
+import Register from "./pages/Register";
+import SignIn from "./pages/SignIn";
 
 
 function App() {
@@ -26,8 +28,8 @@ function App() {
           <Route path="*" element={<ErrorPage />} />
   
           <Route path="/jobs" element={<Jobs />} />
-          {/* <Route path="/agents" element={<Agents />} /> */}
-          {/* <Route path="services" element={<Services />} /> */}
+          <Route path="/register" element={<Register />} />/
+          <Route path="/login" element={<SignIn />} />
         </Route>
         )
       )

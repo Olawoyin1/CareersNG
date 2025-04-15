@@ -48,7 +48,7 @@ const Navbar = () => {
                 Log In
               </button>
             </Link>
-            <Link to="/signup">
+            <Link to="/register">
               <button className="bg-careersng-purple hover:bg-careersng-purple-dark flex items-center gap-2">
                 <Briefcase size={16} />
                 Sign Up
@@ -101,14 +101,14 @@ const Navbar = () => {
             >
               Blog
             </Link>
-            <div className="pt-4 flex flex-col space-y-3">
+            <div className="flex flex-col space-y-3">
               <Link to="/login">
-                <button  className="w-full justify-center">
+                <button  className="w-full bg-blue-950 text-white border-0 p-2 justify-center">
                   Log In
                 </button>
               </Link>
-              <Link to="/signup">
-                <button className="w-full justify-center bg-careersng-purple hover:bg-careersng-purple-dark">
+              <Link to="/register">
+                <button className="w-full p-2 bg-cyan-950 text-white border-0 justify-center bg-careersng-purple hover:bg-careersng-purple-dark">
                   Sign Up
                 </button>
               </Link>
