@@ -174,8 +174,8 @@ const Home = () => {
       <section className="bg-[#242935] from-careersng-navy to-careersng-navy/90 text-white py-16 md:py-24">
         <div className="container mx-auto">
           <div className="flex flex-col items-center text-center">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-6">
-              Find Remote, Freelance & Internship <br className="hidden md:block" />
+            <h1 className="text-5xl lg:text-6xl font-extrabold leading-tight mb-6">
+              Find Remote, Freelance & Internship <br className="" />
               <span className="text-[#ed9172]">Jobs in Nigeria</span>
             </h1>
             <p className="text-lg md:text-xl text-gray-300 mb-8 max-w-xl">
