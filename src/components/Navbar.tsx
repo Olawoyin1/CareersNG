@@ -1,7 +1,7 @@
 
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, User, Briefcase } from "lucide-react";
+import { Menu, X } from "lucide-react";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -41,16 +41,16 @@ const Navbar = () => {
           </div>
 
           {/* Authentication Buttons */}
-          <div className="hidden md:flex items-center space-x-4">
+          <div className="hidden md:flex items-center space-x-1">
             <Link to="/login">
-              <button  className="flex items-center gap-2">
-                <User size={16} />
+              <button  className="border text-sm border-gray-800 p-2 px-5 items-center gap-2">
+                
                 Log In
               </button>
             </Link>
             <Link to="/register">
-              <button className="bg-careersng-purple hover:bg-careersng-purple-dark flex items-center gap-2">
-                <Briefcase size={16} />
+              <button className="bg-[#ee774f] text-white text-sm hover:bg-careersng-purple-dark p-2 px-5  flex items-center">
+                
                 Sign Up
               </button>
             </Link>

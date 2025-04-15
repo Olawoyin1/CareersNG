@@ -34,11 +34,11 @@ const SignIn = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 flex flex-col justify-center py-10">
+    <div className="min-h-screen bg-gray-50 flex flex-col justify-center py-7">
 
         <div className="container">
             <div className="sm:mx-auto sm:w-full sm:max-w-md">
-                <h2 className="mt-2 text-center text-3xl font-bold tracking-tight text-careersng-navy">
+                <h2 className="text-center text-3xl font-bold tracking-tight text-careersng-navy">
                 Sign in to your account
                 </h2>
                 <p className="mt-2 text-center text-sm text-gray-600">
