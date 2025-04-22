@@ -9,9 +9,19 @@
 
 
 
-p, li{
+
+::placeholder, input{
+    font-size: 13px;
+    font-family: 'Montserrat';
+}
+
+
+
+
+p,  a{
     font-size: 14px;
 }
+
 
 .headings, button{
     font-family: "Montserrat", sans-serif;

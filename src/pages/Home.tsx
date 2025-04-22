@@ -174,20 +174,26 @@ const Home = () => {
       <section className="bg-[#242935] from-careersng-navy to-careersng-navy/90 text-white py-16 md:py-24">
         <div className="container mx-auto">
           <div className="flex flex-col items-center text-center">
-            <h1 className="text-5xl lg:text-6xl font-extrabold leading-tight mb-6">
+            <h1 className="text-3xl lg:text-6xl font-extrabold leading-tight mb-6">
               Find Remote, Freelance & Internship <br className="" />
               <span className="text-[#ed9172]">Jobs in Nigeria</span>
             </h1>
             <p className="text-lg md:text-xl text-gray-300 mb-8 max-w-xl">
-              CareersNG connects talented Nigerians with the best remote and flexible 
+              CareersmattersNG connects talented Nigerians with the best remote and flexible 
               work opportunities across the country and beyond.
             </p>
+            <button 
+          type="submit" 
+          className="bg-[#ee774f] text-white w-[140px] py-2 font-medium"
+        >
+          Find Jobs
+        </button>
             
-            <div className="w-full max-w-4xl">
+            <div className="w-full hidden max-w-4xl">
               <SearchBar onSearch={handleSearch} />
             </div>
             
-            <div className="mt-12 text-sm text-gray-300">
+            <div className="hidden mt-12 text-sm text-gray-300">
               <p>Popular searches: Web Development, Content Writing, Digital Marketing, UI/UX Design</p>
             </div>
           </div>
@@ -280,12 +286,12 @@ const Home = () => {
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <Link to="/register">
-              <button className="bg-white text-gray-900 p-3 text-sm hover:bg-gray-100 hover:text-careersng-purple-dark">
+              <button className="bg-[#F25A29] w-full text-white p-3 text-sm hover:bg-[#c26961dd] hover:text-careersng-purple-dark">
                 Create an Account
               </button>
             </Link>
             <Link to="/">
-              <button className="text-white p-3 border text-sm border-white hover:bg-white/10">
+              <button className="text-white w-full p-3 border text-sm border-white hover:bg-white/10">
                 Learn More
               </button>
             </Link>

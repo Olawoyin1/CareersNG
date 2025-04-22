@@ -32,7 +32,7 @@ const HowItWorks = () => {
   return (
     <div className="p">
       <div className="text-center mb-12">
-        <h2 className="text-3xl sm:text-4xl font-bold text-careersng-navy">How CareersNG Works</h2>
+        <h2 className="text-3xl sm:text-4xl font-bold text-careersng-navy">How CareersmattersNG Works</h2>
         <p className="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">
           Your journey to finding the perfect job opportunity in Nigeria is simple and straightforward.
         </p>
