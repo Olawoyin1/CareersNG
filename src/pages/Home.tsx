@@ -184,12 +184,12 @@ const Home = () => {
             </p>
             <button 
           type="submit" 
-          className="bg-[#ee774f] text-white w-[140px] py-2 font-medium"
+          className="bg-[#ee774f] sm:hidden text-white w-[140px] py-2 font-medium"
         >
           Find Jobs
         </button>
             
-            <div className="w-full hidden max-w-4xl">
+            <div className="w-full hidden sm:block max-w-4xl">
               <SearchBar onSearch={handleSearch} />
             </div>
             
