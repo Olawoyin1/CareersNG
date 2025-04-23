@@ -18,7 +18,7 @@ const blogPosts = [
   },
   {
     id: 2,
-    title: "How to Create a Winning Freelance Profile on CareersNG",
+    title: "How to Create a Winning Freelance Profile on CareematterrsNG",
     excerpt: "Learn the essential tips and tricks to make your freelance profile stand out to potential clients.",
     author: "Oluwaseun Adeyemi",
     date: "April 5, 2025",
@@ -77,7 +77,7 @@ const Blog = () => {
       <section className="bg-gray-900 py-10 md:py-16">
         <div className="container mx-auto">
           <div className="flex flex-col items-center text-center">
-            <h1 className="text-3xl md:text-4xl font-bold text-white mb-4">CareersNG Blog</h1>
+            <h1 className="text-3xl md:text-4xl font-bold text-white mb-4">CareersmattersNG Blog</h1>
             <p className="text-lg text-gray-300 mb-8 max-w-3xl">
               Tips, strategies, and insights to thrive in Nigeria's remote and freelance job market
             </p>

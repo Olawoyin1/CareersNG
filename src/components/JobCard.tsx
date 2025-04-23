@@ -51,7 +51,7 @@ const JobCard = ({
             )}
           </div>
           <div className="flex flex-col">
-            <Link to={`/jobs/${id}`} className="text-lg font-medium">
+            <Link to={`/jobs/${id}`} className="text-lg font-bold">
               {title}
             </Link>
 

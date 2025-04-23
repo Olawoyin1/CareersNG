@@ -21,7 +21,7 @@ const CategoryCard = ({ title, icon, jobCount, slug, }: CategoryCardProps) => {
           <div className={`w-10 h-10 bg-white rounded-xl flex items-center justify-center mb-4 text-careersng-purple`}>
             {icon}
           </div>
-          <h3 className="text-lg font-medium text-careersng-navy mb-1">{title}</h3>
+          <h3 className="text-lg font-bold mb-1">{title}</h3>
           <p className="text-sm text-gray-500">
             {jobCount} {jobCount === 1 ? 'job' : 'jobs'} available
           </p>

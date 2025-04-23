@@ -72,7 +72,7 @@ const SearchBar = ({ onSearch, className = "" }: SearchBarProps) => {
           <select
             value={jobType}
             onChange={(e) => setJobType(e.target.value)}
-            className="pl-10 w-full h-full placeholder:text-gray-400 text-grey-400 border-0 border-b border-gray-200 focus:border-[#ed9172] focus:outline-none py-3 transition-all duration-200 cursor-pointer "
+            className="pl-10 w-full h-full placeholder:text-gray-400 text-gray-400 text-sm border-0 border-b border-gray-200 focus:border-[#ed9172] focus:outline-none py-3 transition-all duration-200 cursor-pointer "
           >
             <option value="" className="text-black">All job types</option>
             <option value="Freelance" className="text-black">Freelance</option>

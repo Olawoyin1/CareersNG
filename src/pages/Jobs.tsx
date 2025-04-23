@@ -372,7 +372,7 @@ const Jobs = () => {
       <section className="bg-gray-900 py-10 md:py-16">
         <div className="container mx-auto ">
           <div className="flex flex-col items-center text-center">
-            <h1 className="text-3xl md:text-4xl font-bold text-white mb-6">Find Your Dream Job</h1>
+            <h1 className="text-3xl md:text-4xl font-extrabold text-white mb-6">Find Your Dream Job</h1>
             <p className="text-lg text-gray-300 mb-8 max-w-3xl">
               Browse through hundreds of opportunities perfect for Nigerian freelancers and remote workers
             </p>

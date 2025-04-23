@@ -105,7 +105,7 @@ const Footer = () => {
               Subscribe to our newsletter for updates.
             </p>
             <form className="mt-4">
-              <div className="flex">
+              <div className="flex border border-gray-100">
                 <input
                   type="email"
                   placeholder="Your email"

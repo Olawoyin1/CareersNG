@@ -226,8 +226,20 @@ const Navbar = () => {
           <Link to="/blog" onClick={() => setIsMenuOpen(false)} className={`text-lg ${isActive('/blog')} hover:text-careersng-purple`}>
             Blog
           </Link>
+          <Link to="/blog" onClick={() => setIsMenuOpen(false)} className={`text-lg ${isActive('/blog')} hover:text-careersng-purple`}>
+            Contat Us
+          </Link>
+          <Link to="/blog" onClick={() => setIsMenuOpen(false)} className={`text-lg ${isActive('/blog')} hover:text-careersng-purple`}>
+            FAQ
+          </Link>
+          <Link to="/blog" onClick={() => setIsMenuOpen(false)} className={`text-lg ${isActive('/blog')} hover:text-careersng-purple`}>
+            Resume Revamp
+          </Link>
+          <Link to="/blog" onClick={() => setIsMenuOpen(false)} className={`text-lg ${isActive('/blog')} hover:text-careersng-purple`}>
+            Build CV
+          </Link>
 
-          <div className="pt-6 space-y-3">
+          <div className="space-y-3">
             <Link to="/login" onClick={() => setIsMenuOpen(false)}>
               <button className="w-full bg-blue-950 text-white p-2">
                 Log In
