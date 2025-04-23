@@ -386,7 +386,7 @@ const Jobs = () => {
       
       {/* Jobs Listing Section */}
       <section className="py-10 bg-gray-50">
-        <div className="container mx-auto px-0 sm:px-6 lg:px-14">
+        <div className="container mx-auto ">
           <div className="flex flex-col md:flex-row gap-6">
             {/* Filters Sidebar */}
             <div className="w-full md:w-64 flex-shrink-0">
@@ -592,9 +592,11 @@ const Jobs = () => {
               
               {/* Job cards */}
               <div className="space-y-4">
-                {getCurrentJobs().map((job) => (
-                  <JobCard key={job.id} {...job} />
-                ))}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  {getCurrentJobs().map((job) => (
+                    <JobCard key={job.id} {...job} />
+                  ))}
+                </div>
                 
                 {filteredJobs.length === 0 && (
                   <div className="text-center py-12">

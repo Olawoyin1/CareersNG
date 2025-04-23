@@ -182,12 +182,10 @@ const Home = () => {
               CareersmattersNG connects talented Nigerians with the best remote and flexible 
               work opportunities across the country and beyond.
             </p>
-            <button 
-          type="submit" 
-          className="bg-[#ee774f] sm:hidden text-white w-[140px] py-2 font-medium"
-        >
-          Find Jobs
-        </button>
+            <Link to='/jobs' type="submit" className="bg-[#ee774f] sm:hidden text-white w-[140px] py-2 font-medium"
+            >
+              Find Jobs
+            </Link>
             
             <div className="w-full hidden sm:block max-w-4xl">
               <SearchBar onSearch={handleSearch} />
@@ -210,7 +208,7 @@ const Home = () => {
             </Link>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2  gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {featuredJobs.map((job) => (
               <JobCard key={job.id} {...job} />
             ))}
