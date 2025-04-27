@@ -18,6 +18,8 @@
 
 
 
+
+
 p,  a{
     font-size: 14px;
 }
@@ -27,7 +29,7 @@ p,  a{
 }
 
 
-.headings, button ,select{
+.headings, .cf,  button ,select{
     font-family: "Montserrat", sans-serif;
 }
 

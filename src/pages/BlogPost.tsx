@@ -119,7 +119,7 @@ const BlogPost = () => {
       {/* <Navbar /> */}
 
       <article className="flex-grow py-10 bg-gray-50">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="container mx-auto">
           {/* Breadcrumb */}
           <div className="mb-6">
             <nav className="flex" aria-label="Breadcrumb">
@@ -140,7 +140,7 @@ const BlogPost = () => {
                 <li>
                   <div className="flex items-center">
                     <span className="mx-2 text-gray-400">/</span>
-                    <span className="text-sm text-gray-700">
+                    <span className="text-xs sm:text-sm text-gray-700">
                       {post.title}
                     </span>
                   </div>

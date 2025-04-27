@@ -185,7 +185,7 @@ const JobDetails = () => {
             <div className="lg:col-span-2 space-y-6">
               {/* Job Header */}
               <div className="bg-white rounded-xl shadow-sm p-6">
-                <div className="flex items-start mb-6">
+                <div className="flex items-start mb-4">
                   <div className="flex-shrink-0 h-16 w-16 bg-gray-100 rounded-lg overflow-hidden flex items-center justify-center mr-4">
                     {job.logo ? (
                       <img src={job.logo} alt={`${job.company} logo`} className="h-full w-full object-cover" />
@@ -193,12 +193,16 @@ const JobDetails = () => {
                       <Building className="h-8 w-8 text-gray-400" />
                     )}
                   </div>
-                  
-                  <div className="flex-1">
+
+                  <div>
                     <h1 className="text-2xl font-bold text-careersng-navy mb-1">
                       {job.title}
                     </h1>
-                    <p className="text-lg text-gray-600 mb-2">{job.company}</p>
+                    <p className="text-lg text-gray-600">{job.company}</p>
+                  </div>
+                  
+                </div>
+                  <div className="flex-1">
                     
                     <div className="flex flex-wrap gap-3 text-sm text-gray-500">
                       <div className="flex items-center">
@@ -219,11 +223,10 @@ const JobDetails = () => {
                       </div>
                     </div>
                   </div>
-                </div>
                 
-                <div className="flex flex-wrap gap-3">
+                <div className="flex mt-4 flex-wrap gap-3">
                   <button 
-                    className="bg-red-700 p-2 text-white text-sm px-4 rounded hover:bg-careersng-purple-dark"
+                    className="bg-[#ee774f] p-2 text-white text-sm px-4 rounded hover:bg-careersng-purple-dark"
                     // onClick={() => setIsApplyDialogOpen(true)}
                   >
                     Apply Now
