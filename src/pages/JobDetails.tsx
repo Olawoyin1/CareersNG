@@ -1,29 +1,10 @@
-
 import { useState } from "react";
 import { Link } from "react-router-dom";
-// import Navbar from "@/components/Navbar";
-// import Footer from "@/components/Footer";
-// import { Button } from "@/components/ui/button";
-import { 
-  ArrowLeft, 
-  MapPin, 
-  Briefcase, 
-  DollarSign, 
-  Clock, 
-  Calendar, 
-//   CheckCircle,
-  Share2,
-  Bookmark,
-  Flag,
-  Building,
-  Globe,
-//   Users,
-  Send
-} from "lucide-react";
+import { ArrowLeft, MapPin, Briefcase, DollarSign, Flag, Building, Globe, Send, Bookmark, Share2 } from "lucide-react";
 import JobCard from "../components/JobCard";
-// import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from "@/components/ui/dialog";
-// import JobCard from "@/components/JobCard";
-// import { useToast } from "@/hooks/use-toast";
+import { CiCalendar } from "react-icons/ci";
+import { IoCloudUploadOutline } from "react-icons/io5";
+import { TfiTimer } from "react-icons/tfi";
 
 // Mock job data (in a real app, you would fetch this based on the ID)
 const jobData = {
@@ -38,9 +19,9 @@ const jobData = {
   salary: "₦500,000 - ₦800,000",
   postedAt: "2 days ago",
   description: `
-    <p>TechNova Solutions is looking for a Senior React Developer to join our growing team. The ideal candidate will have extensive experience in building high-performance, scalable web applications using React and its ecosystem.</p>
+    <h4>TechNova Solutions is looking for a Senior React Developer to join our growing team. The ideal candidate will have extensive experience in building high-performance, scalable web applications using React and its ecosystem.</h4>
 
-    <p>As a Senior React Developer, you will be responsible for developing and implementing user interface components using React.js best practices. You will also be responsible for profiling and improving front-end performance and documenting our front-end codebase.</p>
+    <h4>As a Senior React Developer, you will be responsible for developing and implementing user interface components using React.js best practices. You will also be responsible for profiling and improving front-end performance and documenting our front-end codebase.</h4>
 
     <h4>Responsibilities:</h4>
     <ul>
@@ -125,70 +106,41 @@ const similarJobs = [
 ];
 
 const JobDetails = () => {
-//   const { id } = useParams<{ id: string }>();
-//   const [isApplyDialogOpen, setIsApplyDialogOpen] = useState(false);
-//   const [proposal, setProposal] = useState("");
-//   const [rate, setRate] = useState("");
   const [isSaved, setIsSaved] = useState(false);
-//   const { toast } = useToast();
+  const [showModal, setShowModal] = useState(false);
 
-  // In a real app, you would fetch the job details based on the ID
-  const job = jobData;
+  const handleSaveJob = () => setIsSaved(!isSaved);
+  const handleShare = () => navigator.clipboard.writeText(window.location.href);
 
-//   const handleApply = (e: React.FormEvent) => {
-//     e.preventDefault();
-    
-    // toast({
-    //   title: "Proposal Submitted",
-    //   description: "Your proposal has been successfully submitted. You will be notified if the employer is interested.",
-    // });
-    
-    // setIsApplyDialogOpen(false);
-//   };
+  const [fileName, setFileName] = useState<string | null>(null);
 
-  const handleSaveJob = () => {
-    setIsSaved(!isSaved);
-    
-    // toast({
-    //   title: isSaved ? "Job Removed" : "Job Saved",
-    //   description: isSaved 
-    //     ? "This job has been removed from your saved list." 
-    //     : "This job has been saved to your profile for later viewing.",
-    // });
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files.length > 0) {
+      setFileName(e.target.files[0].name);
+    }
   };
 
-  const handleShare = () => {
-    // In a real app, this would open a sharing interface
-    navigator.clipboard.writeText(window.location.href);
-    
-    // toast({
-    //   title: "Link Copied",
-    //   description: "The job link has been copied to your clipboard.",
-    // });
-  };
 
   return (
-    <div className="min-h-screen flex flex-col">
-      {/* <Navbar /> */}
-      
-      <main className="flex-1 bg-gray-50 py-8 md:py-12">
-        <div className="container mx-auto ">
-          <div className="mb-6">
-            <Link to="/jobs" className="inline-flex items-center text-careersng-purple hover:text-careersng-purple-dark">
-              <ArrowLeft size={16} className="mr-2" />
-              Back to all jobs
-            </Link>
-          </div>
-          
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {/* Main Content */}
-            <div className="lg:col-span-2 space-y-6">
-              {/* Job Header */}
-              <div className="bg-white rounded-xl shadow-sm p-6">
+    <div className="min-h-screen bg-gray-100 py-8 ">
+      {/* Back link */}
+      <div className="container mx-auto pb-6 block">
+        <Link to="/jobs" className="flex items-center  hover:underline">
+          <ArrowLeft size={16} className="mr-2" />
+          Back to Jobs
+        </Link>
+      </div>
+
+      {/* Main content */}
+      <div className="container m mx-auto grid grid-cols-1 lg:grid-cols-3 gap-8">
+        {/* Left content */}
+        <div className="lg:col-span-2 space-y-6">
+          {/* Job Header */}
+          <div className="bg-white rounded-xl shadow-sm p-6">
                 <div className="flex items-start mb-4">
                   <div className="flex-shrink-0 h-16 w-16 bg-gray-100 rounded-lg overflow-hidden flex items-center justify-center mr-4">
-                    {job.logo ? (
-                      <img src={job.logo} alt={`${job.company} logo`} className="h-full w-full object-cover" />
+                    {jobData.logo ? (
+                      <img src={jobData.logo} alt={`${jobData.company} logo`} className="h-full w-full object-cover" />
                     ) : (
                       <Building className="h-8 w-8 text-gray-400" />
                     )}
@@ -196,9 +148,9 @@ const JobDetails = () => {
 
                   <div>
                     <h1 className="text-2xl font-bold text-careersng-navy mb-1">
-                      {job.title}
+                      {jobData.title}
                     </h1>
-                    <p className="text-lg text-gray-600">{job.company}</p>
+                    <p className="text-lg text-gray-600">{jobData.company}</p>
                   </div>
                   
                 </div>
@@ -207,19 +159,19 @@ const JobDetails = () => {
                     <div className="flex flex-wrap gap-3 text-sm text-gray-500">
                       <div className="flex items-center">
                         <MapPin size={16} className="mr-1" />
-                        <span>{job.location}</span>
+                        <span>{jobData.location}</span>
                       </div>
                       <div className="flex items-center">
                         <Briefcase size={16} className="mr-1" />
-                        <span>{job.type}</span>
+                        <span>{jobData.type}</span>
                       </div>
                       <div className="flex items-center">
                         <DollarSign size={16} className="mr-1" />
-                        <span>{job.salary}</span>
+                        <span>{jobData.salary}</span>
                       </div>
                       <div className="flex items-center">
-                        <Clock size={16} className="mr-1" />
-                        <span>Posted {job.postedAt}</span>
+                        <TfiTimer size={16} className="mr-1" />
+                        <span>Posted {jobData.postedAt}</span>
                       </div>
                     </div>
                   </div>
@@ -227,7 +179,8 @@ const JobDetails = () => {
                 <div className="flex mt-4 flex-wrap gap-3">
                   <button 
                     className="bg-[#ee774f] p-2 text-white text-sm px-4 rounded hover:bg-careersng-purple-dark"
-                    // onClick={() => setIsApplyDialogOpen(true)}
+                    
+                    onClick={() => setShowModal(true)}
                   >
                     Apply Now
                   </button>
@@ -245,58 +198,57 @@ const JobDetails = () => {
                     Share
                   </button>
                 </div>
-              </div>
-              
-              {/* Job Description */}
-              <div className="bg-white rounded-xl shadow p-6">
-                <h2 className="text-xl font-semibold  mb-4">Job Description</h2>
-                <div className="prose text-gray-600 max-w-none" dangerouslySetInnerHTML={{ __html: job.description }} />
-              </div>
-              
-              {/* Skills Required */}
-              <div className="bg-white rounded-xl shadow p-6">
-                <h2 className="text-xl font-semibold text-careersng-navy mb-4">Skills Required</h2>
-                <div className="flex flex-wrap gap-2">
-                  {job.skills.map((skill, index) => (
-                    <span 
-                      key={index} 
-                      className="px-3 py-1 bg-careersng-purple/10 text-careersng-purple rounded-full text-sm"
-                    >
-                      {skill}
-                    </span>
-                  ))}
-                </div>
-              </div>
-              
-              {/* Application CTA */}
-              <div className="flex items-center justify-center flex-col rounded-xl shadow p-6 text-center">
-                <h2 className="text-xl font-semibold text-careersng-navy mb-2">Ready to Apply?</h2>
-                <p className="text-gray-600 mb-4">Submit your proposal before the deadline: {job.applicationDeadline}</p>
-                <button 
-                  className="bg-red-900 text-white p-2 px-4 rounded text-sm flex items-center border-1 hover:bg-careersng-purple-dark"
-                //   onClick={() => setIsApplyDialogOpen(true)}
-                >
-                  Submit Your Proposal {" "}
-                  <Send size={16} className="" />
-                </button>
-              </div>
+          </div>
+
+          {/* Job description */}
+          <div className="bg-white rounded-lg shadow p-6">
+            <h2 className="text-xl font-semibold mb-4">Job Description</h2>
+            <div className="text-gray-700 prose" dangerouslySetInnerHTML={{ __html: jobData.description }} />
+          </div>
+
+          {/* Skills */}
+          <div className="bg-white rounded-lg shadow p-6">
+            <h2 className="text-xl font-semibold mb-4">Skills Required</h2>
+            <div className="flex flex-wrap gap-2">
+              {jobData.skills.map((skill, i) => (
+                <span key={i} className="bg-indigo-100 text-indigo-700 text-xs px-3 py-1 rounded-full">
+                  {skill}
+                </span>
+              ))}
             </div>
-            
-            {/* Sidebar */}
-            <div className="space-y-6">
-              {/* Company Info */}
-              <div className="bg-white rounded-xl shadow-sm p-6">
+          </div>
+
+
+
+          {/* Application CTA */}
+          <div className="flex items-center bg-white justify-center flex-col rounded-xl shadow p-6 text-center">
+                <h2 className="text-xl font-semibold text-careersng-navy mb-2">Ready to Apply?</h2>
+                <p className="text-gray-600 mb-4">Submit your proposal before the deadline: {jobData.applicationDeadline}</p>
+                <button 
+                  className="bg-[#ee774f] text-white p-2 px-4 rounded text-sm flex items-center border-1 hover:bg-careersng-purple-dark"
+                  onClick={() => setShowModal(true)}
+                >
+                  Submit Your Proposal 
+                  <Send size={16} className="ml-2" />
+                </button>
+          </div>
+        </div>
+
+        {/* Right sidebar */}
+        <div className="space-y-6">
+          {/* Company Info */}
+          <div className="bg-white rounded-xl shadow-sm p-6">
                 <h2 className="text-xl font-semibold text-careersng-navy mb-4">Company Information</h2>
                 
                 <div className="space-y-4">
-                  <p className="text-gray-600">{job.companyInfo.description}</p>
+                  <p className="text-gray-600">{jobData.companyInfo.description}</p>
                   
                   <div className="space-y-2">
                     <div className="flex items-start">
                       <Building size={16} className="mr-2 mt-1 text-gray-500" />
                       <div>
                         <span className="text-sm text-gray-500 block">Company Size</span>
-                        <span className="font-medium">{job.companyInfo.size}</span>
+                        <span className="font-medium">{jobData.companyInfo.size}</span>
                       </div>
                     </div>
                     
@@ -305,12 +257,12 @@ const JobDetails = () => {
                       <div>
                         <span className="text-sm text-gray-500 block">Website</span>
                         <a 
-                          href={job.companyInfo.website} 
+                          href={jobData.companyInfo.website} 
                           target="_blank" 
                           rel="noopener noreferrer"
                           className="font-medium text-careersng-purple hover:text-careersng-purple-dark"
                         >
-                          {job.companyInfo.website.replace('https://', '')}
+                          {jobData.companyInfo.website.replace('https://', '')}
                         </a>
                       </div>
                     </div>
@@ -319,31 +271,32 @@ const JobDetails = () => {
                       <MapPin size={16} className="mr-2 mt-1 text-gray-500" />
                       <div>
                         <span className="text-sm text-gray-500 block">Location</span>
-                        <span className="font-medium">{job.companyInfo.location}</span>
+                        <span className="font-medium">{jobData.companyInfo.location}</span>
                       </div>
                     </div>
                     
                     <div className="flex items-start">
-                      <Calendar size={16} className="mr-2 mt-1 text-gray-500" />
+                      <CiCalendar size={16} className="mr-2 mt-1 text-gray-500" />
                       <div>
                         <span className="text-sm text-gray-500 block">Founded</span>
-                        <span className="font-medium">{job.companyInfo.founded}</span>
+                        <span className="font-medium">{jobData.companyInfo.founded}</span>
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
-              
-              {/* Job Overview */}
-              <div className="bg-white rounded-xl shadow-sm p-6">
+          </div>
+
+
+            {/* Job Overview */}
+            <div className="bg-white rounded-xl shadow-sm p-6">
                 <h2 className="text-xl font-semibold text-careersng-navy mb-4">Job Overview</h2>
                 
                 <div className="space-y-4">
                   <div className="flex items-start">
-                    <Calendar size={16} className="mr-2 mt-1 text-gray-500" />
+                    <CiCalendar size={16} className="mr-2 mt-1 text-gray-500" />
                     <div>
                       <span className="text-sm text-gray-500 block">Application Deadline</span>
-                      <span className="font-medium">{job.applicationDeadline}</span>
+                      <span className="font-medium">{jobData.applicationDeadline}</span>
                     </div>
                   </div>
                   
@@ -351,7 +304,7 @@ const JobDetails = () => {
                     <Briefcase size={16} className="mr-2 mt-1 text-gray-500" />
                     <div>
                       <span className="text-sm text-gray-500 block">Job Type</span>
-                      <span className="font-medium">{job.jobType}</span>
+                      <span className="font-medium">{jobData.jobType}</span>
                     </div>
                   </div>
                   
@@ -359,7 +312,7 @@ const JobDetails = () => {
                     <MapPin size={16} className="mr-2 mt-1 text-gray-500" />
                     <div>
                       <span className="text-sm text-gray-500 block">Location</span>
-                      <span className="font-medium">{job.location} ({job.type})</span>
+                      <span className="font-medium">{jobData.location} ({jobData.type})</span>
                     </div>
                   </div>
                   
@@ -367,15 +320,15 @@ const JobDetails = () => {
                     <DollarSign size={16} className="mr-2 mt-1 text-gray-500" />
                     <div>
                       <span className="text-sm text-gray-500 block">Salary Range</span>
-                      <span className="font-medium">{job.salary}</span>
+                      <span className="font-medium">{jobData.salary}</span>
                     </div>
                   </div>
                   
                   <div className="flex items-start">
-                    <Clock size={16} className="mr-2 mt-1 text-gray-500" />
+                    <TfiTimer size={16} className="mr-2 mt-1 text-gray-500" />
                     <div>
                       <span className="text-sm text-gray-500 block">Posted</span>
-                      <span className="font-medium">{job.postedAt}</span>
+                      <span className="font-medium">{jobData.postedAt}</span>
                     </div>
                   </div>
                 </div>
@@ -388,11 +341,15 @@ const JobDetails = () => {
                   Report this job
                 </button>
               </div>
-            </div>
-          </div>
-          
-          {/* Similar Jobs Section */}
-          <section className="mt-12">
+
+
+        </div>
+
+      </div>
+        {/* Similar Jobs Section */}
+        <section className="mt-12 ">
+          <div className="container">
+
             <h2 className="text-2xl font-bold text-careersng-navy mb-6">Similar Jobs</h2>
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -400,98 +357,73 @@ const JobDetails = () => {
                 <JobCard key={job.id} {...job} />
               ))}
             </div>
-          </section>
-        </div>
-      </main>
-      
-      {/* Apply Dialog */}
-      {/* <Dialog open={isApplyDialogOpen} onOpenChange={setIsApplyDialogOpen}>
-        <DialogContent className="sm:max-w-2xl">
-          <DialogHeader>
-            <DialogTitle className="text-2xl">Apply for {job.title}</DialogTitle>
-            <DialogDescription>
-              Provide your proposal and expected salary to apply for this position at {job.company}.
-            </DialogDescription>
-          </DialogHeader> */}
-          
-          {/* <form onSubmit={handleApply} className="space-y-6 py-4">
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
-                Your Proposal
-              </label>
-              <textarea
-                className="w-full rounded-md border-gray-300 shadow-sm focus:border-careersng-purple focus:ring-careersng-purple min-h-[200px]"
-                placeholder="Introduce yourself and explain why you're a good fit for this role..."
-                value={proposal}
-                onChange={(e) => setProposal(e.target.value)}
-                required
-              />
-              <p className="mt-1 text-sm text-gray-500">
-                Be specific about your skills and experience relevant to this job.
-              </p>
-            </div>
-            
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
-                Your Expected Salary/Rate
-              </label>
-              <input
-                type="text"
-                className="w-full rounded-md border-gray-300 shadow-sm focus:border-careersng-purple focus:ring-careersng-purple"
-                placeholder="e.g., ₦500,000/month or ₦5,000/hour"
-                value={rate}
-                onChange={(e) => setRate(e.target.value)}
-                required
-              />
-            </div>
-            
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
-                Upload Additional Documents (Optional)
-              </label>
-              <div className="flex items-center justify-center w-full">
-                <label
-                  htmlFor="file-upload"
-                  className="relative cursor-pointer rounded-md font-medium text-careersng-purple hover:text-careersng-purple-dark focus-within:outline-none"
-                >
-                  <div className="flex items-center justify-center w-full h-32 px-4 transition bg-white border-2 border-gray-300 border-dashed rounded-md appearance-none cursor-pointer hover:border-careersng-purple focus:outline-none">
-                    <span className="flex flex-col items-center space-y-2">
-                      <svg className="w-6 h-6 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
-                      </svg>
-                      <span className="font-medium text-gray-600">
-                        Drop files to Attach, or
-                        <span className="text-careersng-purple underline"> browse</span>
-                      </span>
-                      <span className="text-xs text-gray-500">
-                        (PDF, DOCX, up to 5MB)
-                      </span>
-                    </span>
-                  </div>
-                  <input id="file-upload" name="file-upload" type="file" className="sr-only" />
-                </label>
               </div>
-            </div>
+          </section>
+
+      {/* Apply Modal */}
+      {showModal && (
+        <div className="fixed p-3 inset-0 z-50 flex items-center justify-center bg-black/80 bg-opacity-50">
+          <div className="bg-white rounded-lg w-full max-w-lg p-4 py-7 sm:p-6 relative">
+            <button
+              className="absolute top-2 right-2 text-gray-500 hover:text-gray-800"
+              onClick={() => setShowModal(false)}
+            >
+              ✕
+            </button>
+
+            <h2 className="text-xl font-semibold mb-4">Submit Your Application</h2>
+
+            <form className="space-y-4">
+              <div>
+                <label className="block mb-1 text-sm font-medium">Cover Letter</label>
+                <textarea
+                  rows={5}
+                  className="w-full border border-gray-300 rounded p-2 focus:outline-none focus:ring-1 focus:ring-[#ee774f]"
+                  placeholder="Write your cover letter..."
+                />
+              </div>
+
             
-            <div>
-              <button
-                type="button"
-                onClick={() => setIsApplyDialogOpen(false)}
-              >
-                Cancel
-              </button>
-              <button 
-                type="submit" 
-                className="bg-careersng-purple hover:bg-careersng-purple-dark"
-              >
-                <Send size={16} className="mr-2" />
-                Submit Application
-              </button>
-            </div>
-          </form>
-        </div> */}
-      
-     </div>
+
+
+<div>
+      <label className="block mb-1 text-sm font-medium">Attach File</label>
+      <div className="relative border-2 border-dashed border-gray-300 rounded-lg p-6 flex flex-col items-center justify-center text-center cursor-pointer hover:border-[#ee774f] transition">
+      <IoCloudUploadOutline size={20} />
+        {fileName ? (
+          <p className="text-sm text-gray-700">{fileName}</p>
+        ) : (
+          <p className="text-sm text-gray-500">Click to upload or drag and drop</p>
+        )}
+        <input
+          type="file"
+          className="absolute inset-0 opacity-0 cursor-pointer"
+          onChange={handleFileChange}
+        />
+      </div>
+    </div>
+
+
+              <div className="pt-4 flex justify-end gap-2">
+                <button
+                  type="button"
+                  className="px-4 py-2 text-sm rounded border border-gray-300 text-gray-700 hover:bg-gray-100"
+                  onClick={() => setShowModal(false)}
+                >
+                  Cancel
+                </button>
+                <button
+                  type="submit"
+                  className="px-6 py-2 bg-[#ee774f] text-white rounded hover:bg-blue-900 text-sm"
+                >
+                  Submit
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
+    </div>
   );
 };
 

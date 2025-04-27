@@ -1,6 +1,7 @@
-import { Clock, MapPin, Briefcase } from "lucide-react";
+import {  MapPin, Briefcase } from "lucide-react";
 import { Link } from "react-router-dom";
 
+import { TfiTimer } from "react-icons/tfi";
 import { SlBriefcase } from "react-icons/sl";
 
 export interface JobProps {
@@ -77,7 +78,7 @@ const JobCard = ({
               <p>{salary}</p>
             </div>
             <p className="flex text-gray-500 text-sm items-center">
-              <Clock size={16} className="mr-1" />
+              <TfiTimer size={16} className="mr-1" />
               <span>{postedAt}</span>
             </p>
           </div>

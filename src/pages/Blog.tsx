@@ -1,9 +1,8 @@
 
-import { Calendar, Clock, User, Tag } from "lucide-react";
+import {  Clock, Tag } from "lucide-react";
 import { Link } from "react-router-dom";
-// import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-// import { Button } from "@/components/ui/button";
-// import { Link } from "react-router-dom";
+import { PiUser } from "react-icons/pi";
+import { CiCalendar } from "react-icons/ci";
 
 // Mock blog post data
 const blogPosts = [
@@ -111,9 +110,9 @@ const Blog = () => {
                     {blogPosts[0].excerpt}
                   </p>
                   <div className="flex items-center text-sm text-gray-500 mb-5">
-                    <User size={16} className="mr-1" />
+                    <PiUser size={16} className="mr-1" />
                     <span className="mr-4">{blogPosts[0].author}</span>
-                    <Calendar size={16} className="mr-1" />
+                    <CiCalendar size={16} className="mr-1" />
                     <span className="mr-4">{blogPosts[0].date}</span>
                     <Clock size={16} className="mr-1" />
                     <span>{blogPosts[0].readTime}</span>
@@ -152,9 +151,9 @@ const Blog = () => {
 
                     <pattern className="flex-grow">
                         <div className="flex items-center text-xs text-gray-500">
-                            <User size={14} className="mr-1" />
+                            <PiUser size={14} className="mr-1" />
                             <span className="mr-3">{post.author}</span>
-                            <Calendar size={14} className="mr-1" />
+                            <CiCalendar size={14} className="mr-1" />
                             <span className="mr-3">{post.date}</span>
                             <Clock size={14} className="mr-1" />
                             <span>{post.readTime}</span>

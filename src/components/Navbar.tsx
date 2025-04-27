@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
+import { ChevronDown } from 'lucide-react';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -12,7 +13,24 @@ const Navbar = () => {
       username:"Olawoyin",
       image: "",
   })
+  const [open, setOpen] = useState(false);
   const location = useLocation();
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+
+   // Close dropdown when clicking outside
+   useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
 
   const isActive = (path: string) => {
     return location.pathname === path ? "text-blue-900 underline font-semibold" : "text-gray-600";
@@ -34,7 +52,7 @@ const Navbar = () => {
             </Link>
 
             {/* Desktop Navigation */}
-            <div className="hidden mt-1 md:flex items-center space-x-4">
+            <div className="hidden mt-1 md:flex items-center text-sm space-x-4">
               <Link to="/jobs" className={`${isActive('/jobs')} hover:text-red-700 transition-colors`}>
                 Find Jobs
               </Link>
@@ -54,38 +72,93 @@ const Navbar = () => {
           <div className="hidden md:flex items-center space-x-2">
 
           {
-            loggedIn ? ( <>
-              {
-                user.role === 'client' && <Link to="/post_job" className={`${isActive('/post_job')} hover:text-red-700 transition-colors`}>
-                Post Job
-              </Link>
-              }
-
-<h2>|</h2>
-
-              <Link to="/dashboard" className={`${isActive('/dashboard')} hover:text-red-700 transition-colors`}>
-                Dashboard
-              </Link>
-          <h2>|</h2>
+            loggedIn ? ( 
             
-          <div className="flex items-center">
-            <div className="h-7 min-w-7 rounded-full overflow-hidden bg-gray-200 mr-1">
-              {user.image ? (
-                <img src={user.image} alt={user.username} className="h-full w-full object-cover" />
-              ) : (
-                <div className="h-full w-full flex items-center justify-center bg-careersng-purple text-white font-medium">
-                  {user.username.charAt(0)}
-                </div>
-              )}
-            </div>
-            <div className="flex flex-col">
-              <h4 className="font-extrabold text-xs">{user.username}</h4>
-              <span className="text-[10px] text-gray-500">
-                {user.email}
-              </span>
-            </div>
+            
+            <>
+              
+
+
+    
+<div className="relative flex items-center gap-4" ref={dropdownRef}>
+      
+
+      <div className="relative">
+        <button
+          onClick={() => setOpen(!open)}
+          className="flex items-center gap-2 focus:outline-none"
+        >
+          <div className="h-8 w-8 rounded-full overflow-hidden bg-gray-200">
+            {user.image ? (
+              <img
+                src={user.image}
+                alt={user.username}
+                className="h-full w-full object-cover"
+              />
+            ) : (
+              <div className="h-full w-full flex items-center justify-center bg-careersng-purple text-white font-semibold text-xs">
+                {user.username.charAt(0)}
+              </div>
+            )}
           </div>
-                  </>
+
+          <div className="flex flex-col items-start">
+            <h4 className="font-semibold text-xs">{user.username}</h4>
+            <span className="text-[10px] text-gray-500">{user.email}</span>
+          </div>
+
+          <ChevronDown className="h-4 w-4 text-gray-600" />
+        </button>
+
+        {/* Slide Animation */}
+        <div
+          className={`
+            absolute flex flex-col gap-3 p-4 right-0 mt-2 w-48 bg-white shadow rounded-md z-50 border border-gray-300
+            transform transition-all duration-300 ease-in-out
+            ${open ? 'translate-x-0 opacity-100' : 'translate-x-10 opacity-0 pointer-events-none'}
+          `}
+        >
+          {user.role === 'client' && (
+            <Link
+              to="/post_job"
+              className={`${isActive('/post_job')} hover:text-red-700 transition-colors text-sm font-medium`}
+            >
+              Post Job
+            </Link>
+          )}
+          <Link
+            to="/dashboard"
+            className={`${isActive('/dashboard')} hover:text-red-700 transition-colors text-sm font-medium`}
+          >
+            Dashboard
+          </Link>
+          <button
+            onClick={() => {
+              // handle logout here
+              setOpen(false);
+            }}
+            className="w-full text-left hover:text-red-700 transition-colors text-sm font-medium"
+          >
+            Logout
+          </button>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            </>
             ) : 
             (
             <>
@@ -137,14 +210,14 @@ const Navbar = () => {
         </div>
 
         {/* Navigation Links */}
-        <div className="flex bg-white h-[100vh] flex-col px-6 py-4 space-y-4">
+        <div className="flex bg-white h-[100vh] text-xl flex-col px-6 py-4 space-y-4">
           {
             loggedIn && (
               <>
               
             
           <div className="flex items-center">
-            <div className="h-7 min-w-7 rounded-full overflow-hidden bg-gray-200 mr-1">
+            <div className="h-10 min-w-10 rounded-full overflow-hidden bg-gray-200 mr-2">
               {user.image ? (
                 <img src={user.image} alt={user.username} className="h-full w-full object-cover" />
               ) : (
@@ -154,8 +227,8 @@ const Navbar = () => {
               )}
             </div>
             <div className="flex flex-col">
-              <h4 className="font-extrabold text-xs">{user.username}</h4>
-              <span className="text-[10px] text-gray-500">
+              <h4 className="font-extrabold ">{user.username}</h4>
+              <span className="text-sm text-gray-500">
                 {user.email}
               </span>
             </div>
@@ -180,16 +253,16 @@ const Navbar = () => {
           <Link to="/blog" onClick={() => setIsMenuOpen(false)} className={`text-lg ${isActive('/blog')} hover:text-careersng-purple`}>
             Blog
           </Link>
-          <Link to="/blog" onClick={() => setIsMenuOpen(false)} className={`text-lg ${isActive('/blog')} hover:text-careersng-purple`}>
+          <Link to="/blog" onClick={() => setIsMenuOpen(false)} className={`text-lg ${isActive('/contact')} hover:text-careersng-purple`}>
             Contat Us
           </Link>
-          <Link to="/blog" onClick={() => setIsMenuOpen(false)} className={`text-lg ${isActive('/blog')} hover:text-careersng-purple`}>
+          <Link to="/about" onClick={() => setIsMenuOpen(false)} className={`text-lg ${isActive('/faq')} hover:text-careersng-purple`}>
             FAQ
           </Link>
-          <Link to="/blog" onClick={() => setIsMenuOpen(false)} className={`text-lg ${isActive('/blog')} hover:text-careersng-purple`}>
+          <Link to="/about" onClick={() => setIsMenuOpen(false)} className={`text-lg ${isActive('/resume')} hover:text-careersng-purple`}>
             Resume Revamp
           </Link>
-          <Link to="/blog" onClick={() => setIsMenuOpen(false)} className={`text-lg ${isActive('/blog')} hover:text-careersng-purple`}>
+          <Link to="/about" onClick={() => setIsMenuOpen(false)} className={`text-lg ${isActive('/cv')} hover:text-careersng-purple`}>
             Build CV
           </Link>
 
