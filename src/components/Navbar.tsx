@@ -37,7 +37,7 @@ const Navbar = () => {
 
   const isActive = (path: string) => {
     return location.pathname === path
-      ? "text-blue-900 underline font-semibold"
+      ? "text-blue-900 underline font-extrabold"
       : "text-gray-600";
   };
 
@@ -61,7 +61,7 @@ const Navbar = () => {
             </Link>
 
             {/* Desktop Navigation */}
-            <div className="hidden mt-1 md:flex items-center text-sm space-x-4">
+            <div className="hidden mt-1 md:flex items-center font-semibold text-sm space-x-4">
               <Link
                 to="/jobs"
                 className={`${isActive(
@@ -79,9 +79,9 @@ const Navbar = () => {
                 Categories
               </Link>
               <Link
-                to="/about"
+                to="/how_it_works"
                 className={`${isActive(
-                  "/about"
+                  "/how_it_works"
                 )} hover:text-red-700  transition-colors`}
               >
                 How It Works
@@ -238,7 +238,7 @@ const Navbar = () => {
         </div>
 
         {/* Navigation Links */}
-        <div className="flex bg-white h-[100vh] text-xl flex-col px-6 py-4 space-y-4">
+        <div className="flex bg-white h-[100vh] text-xl font-semibold flex-col px-6 py-4 space-y-5">
           {loggedIn && (
             <>
               <div className="flex items-center">
@@ -250,7 +250,7 @@ const Navbar = () => {
                       className="h-full w-full object-cover"
                     />
                   ) : (
-                    <div className="h-full w-full flex items-center justify-center bg-careersng-purple text-white font-medium">
+                    <div className="h-full w-full flex items-center justify-center bg-careersng-purple text-white ">
                       {user.username.charAt(0)}
                     </div>
                   )}
@@ -266,7 +266,7 @@ const Navbar = () => {
                   to="/admin"
                   className={`${isActive(
                     "/admin"
-                  )} hover:text-red-700 transition-colors  font-medium`}
+                  )} hover:text-red-700 transition-colors  `}
                 >
                   Admin
                 </Link>
@@ -286,7 +286,7 @@ const Navbar = () => {
                   to="/post_job"
                   className={`${isActive(
                     "/post_job"
-                  )} hover:text-red-700 transition-colors  font-medium`}
+                  )} hover:text-red-700 transition-colors `}
                 >
                   Post Job
                 </Link>
@@ -315,10 +315,10 @@ const Navbar = () => {
             Categories
           </Link>
           <Link
-            to="/about"
+            to="/how_it_works"
             onClick={() => setIsMenuOpen(false)}
             className={`text-xl ${isActive(
-              "/about"
+              "/how_it_works"
             )} hover:text-careersng-purple`}
           >
             How It Works
@@ -333,7 +333,7 @@ const Navbar = () => {
             Blog
           </Link>
           <Link
-            to="/blog"
+            to="/contact"
             onClick={() => setIsMenuOpen(false)}
             className={`text-xl ${isActive(
               "/contact"
@@ -342,7 +342,7 @@ const Navbar = () => {
             Contat Us
           </Link>
           <Link
-            to="/about"
+            to="/faq"
             onClick={() => setIsMenuOpen(false)}
             className={`text-xl ${isActive(
               "/faq"
@@ -351,7 +351,7 @@ const Navbar = () => {
             FAQ
           </Link>
           <Link
-            to="/about"
+            to="/resume"
             onClick={() => setIsMenuOpen(false)}
             className={`text-xl ${isActive(
               "/resume"
@@ -360,7 +360,7 @@ const Navbar = () => {
             Resume Revamp
           </Link>
           <Link
-            to="/about"
+            to="/cv"
             onClick={() => setIsMenuOpen(false)}
             className={`text-xl ${isActive("/cv")} hover:text-careersng-purple`}
           >
@@ -374,8 +374,8 @@ const Navbar = () => {
               </>
             ) : (
               <>
-                <Link to="/login">Log In</Link>
-                <Link to="/register">Sign Up</Link>
+                <Link to="/login" className="text-gray-700">Log In</Link>
+                <Link to="/register" className="text-gray-700">Sign Up</Link>
               </>
             )}
 

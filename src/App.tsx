@@ -86,6 +86,8 @@ import PostJob from "./pages/PostJob";
 import AdminDashboard from "./pages/Admin/AdminDashboard";
 import AdminJobs from "./pages/Admin/AdminJobs";
 import AdminBlogs from "./pages/Admin/AdminBlogs";
+import Categories from "./pages/Categories";
+import HowItWorks from "./pages/HowItWorks";
 
 function App() {
   const main = createBrowserRouter(
@@ -95,6 +97,8 @@ function App() {
         <Route path="/" element={<SharedLayout />}>
           <Route index element={<Home />} />
           <Route path="jobs" element={<Jobs />} />
+          <Route path="categories" element={<Categories />} />
+          <Route path="how_it_works" element={<HowItWorks />} />
           <Route path="post_job" element={<PostJob />} />
           <Route path="job_details" element={<JobDetails />} />
           <Route path="blog" element={<Blog />} />
