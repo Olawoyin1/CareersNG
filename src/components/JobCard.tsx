@@ -88,7 +88,7 @@ const JobCard = ({
             </span>
 
             <Link
-              to={`/jobs/${id}`}
+              to={`/job_details`}
               className="text-sm font-medium text-careersng-purple hover:text-careersng-purple-dark"
             >
               View Details

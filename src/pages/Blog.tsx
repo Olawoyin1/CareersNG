@@ -1,5 +1,6 @@
 
 import { Calendar, Clock, User, Tag } from "lucide-react";
+import { Link } from "react-router-dom";
 // import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 // import { Button } from "@/components/ui/button";
 // import { Link } from "react-router-dom";
@@ -117,9 +118,9 @@ const Blog = () => {
                     <Clock size={16} className="mr-1" />
                     <span>{blogPosts[0].readTime}</span>
                   </div>
-                  <button className="bg-careersng-purple hover:bg-careersng-purple-dark">
+                  <Link to={`/blog/${blogPosts[0].id}`} className="bg-careersng-purple hover:bg-careersng-purple-dark">
                     Read Full Article
-                  </button>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -160,9 +161,9 @@ const Blog = () => {
                         </div>
                     </pattern>
                     <div className="">
-                        <button className="text-careersng-purple text-sm hover:text-careersng-purple-dark p-0 h-auto">
+                        <Link to={`/blog/${post.id}`} className=" text-[#ee774f] text-sm hover:text-careersng-purple-dark p-0 h-auto">
                             Read More →
-                        </button>
+                        </Link>
                     </div>
 
                 </div>

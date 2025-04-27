@@ -248,7 +248,7 @@ const Home = () => {
           <HowItWorks />
           
           <div className="mt-12 text-center">
-            <Link to="/signup">
+            <Link to="/register">
               <button className="text-white p-2 px-4 text-sm bg-[#ee774f]">
                 Sign Up to Start Earning
               </button>

@@ -1,141 +1,21 @@
-
-// import { useState } from "react";
-// import { Link, useLocation } from "react-router-dom";
-// import { Menu, X } from "lucide-react";
-
-// const Navbar = () => {
-//   const [isMenuOpen, setIsMenuOpen] = useState(false);
-//   const location = useLocation();
-  
-//   const isActive = (path: string) => {
-//     return location.pathname === path ? "text-careersng-purple" : "text-gray-600";
-//   };
-
-//   return (
-//     <nav className="sticky top-0 z-50 w-full bg-white/80 backdrop-blur-md border-b border-gray-100">
-//       <div className="container mx-auto">
-//         <div className="flex justify-between items-center h-16">
-//           <div className="flex gap-3 items-center">
-//               {/* Logo */}
-//               <Link to="/" className="flex items-end space-x-2">
-//                 <div className="text-2xl font-bold flex items-end text-careersng-navy">
-//                     <img src="../../Images/logo.png" alt="" className="w-8" />
-//                     <h4 className="text-xl -ml-2  font-extrabold text-careersng-navy">areermatters<span className="text-[#F25A29]">NG</span></h4>
-              
-//                 </div>
-//               </Link>
-//               {/* Desktop Navigation */}
-//               <div className="hidden mt-1 md:flex items-center space-x-4">
-//                 <Link to="/jobs" className={`${isActive('/jobs')} hover:text-careersng-purple transition-colors`}>
-//                   Find Jobs
-//                 </Link>
-//                 <Link to="/categories" className={`${isActive('/categories')} hover:text-careersng-purple transition-colors`}>
-//                   Categories
-//                 </Link>
-//                 <Link to="/about" className={`${isActive('/about')} hover:text-careersng-purple transition-colors`}>
-//                   How It Works
-//                 </Link>
-//                 <Link to="/blog" className={`${isActive('/blog')} hover:text-careersng-purple transition-colors`}>
-//                   Blog
-//                 </Link>
-//               </div>
-//           </div>
-
-//           {/* Authentication Buttons */}
-//           <div className="hidden md:flex items-center space-x-1">
-//             <Link to="/login">
-//               <button  className="border text-sm border-gray-800 p-2 px-5 items-center gap-2">
-                
-//                 Log In
-//               </button>
-//             </Link>
-//             <Link to="/register">
-//               <button className="bg-[#ee774f] text-white text-sm hover:bg-careersng-purple-dark p-2 px-5  flex items-center">
-                
-//                 Sign Up
-//               </button>
-//             </Link>
-//           </div>
-
-//           {/* Mobile Menu Button */}
-//           <div className="md:hidden">
-//             <button
-//               type="button"
-//               className="text-gray-500 hover:text-careersng-purple"
-//               onClick={() => setIsMenuOpen(!isMenuOpen)}
-//             >
-//               {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-//             </button>
-//           </div>
-//         </div>
-//       </div>
-
-//       {/* Mobile Menu */}
-//       {isMenuOpen && (
-//         <div className="md:hidden bg-white border-b border-gray-100">
-//           <div className="">
-//             <Link
-//               to="/jobs"
-//               className={`block py-2 ${isActive('/jobs')} hover:text-careersng-purple`}
-//               onClick={() => setIsMenuOpen(false)}
-//             >
-//               Find Jobs
-//             </Link>
-//             <Link
-//               to="/categories"
-//               className={`block py-2 ${isActive('/categories')} hover:text-careersng-purple`}
-//               onClick={() => setIsMenuOpen(false)}
-//             >
-//               Categories
-//             </Link>
-//             <Link
-//               to="/about"
-//               className={`block py-2 ${isActive('/about')} hover:text-careersng-purple`}
-//               onClick={() => setIsMenuOpen(false)}
-//             >
-//               How It Works
-//             </Link>
-//             <Link
-//               to="/blog"
-//               className={`block py-2 ${isActive('/blog')} hover:text-careersng-purple`}
-//               onClick={() => setIsMenuOpen(false)}
-//             >
-//               Blog
-//             </Link>
-//             <div className="flex flex-col space-y-3">
-//               <Link to="/login">
-//                 <button  className="w-full bg-blue-950 text-white border-0 p-2 justify-center">
-//                   Log In
-//                 </button>
-//               </Link>
-//               <Link to="/register">
-//                 <button className="w-full p-2 bg-cyan-950 text-white border-0 justify-center bg-careersng-purple hover:bg-careersng-purple-dark">
-//                   Sign Up
-//                 </button>
-//               </Link>
-//             </div>
-//           </div>
-//         </div>
-//       )}
-//     </nav>
-//   );
-// };
-
-// export default Navbar;
-
-
-
-
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [loggedIn, _setLoggedIn] = useState(true)
+  const [user, _setUser] = useState({
+      email: "yustee2017@gmail.com",
+      password:"Olamilekan@9",
+      role:"client",
+      username:"Olawoyin",
+      image: "",
+  })
   const location = useLocation();
 
   const isActive = (path: string) => {
-    return location.pathname === path ? "text-careersng-purple" : "text-gray-600";
+    return location.pathname === path ? "text-blue-900 underline font-semibold" : "text-gray-600";
   };
 
   return (
@@ -143,7 +23,8 @@ const Navbar = () => {
       <div className="container mx-auto">
         <div className="flex justify-between items-center h-16">
           <div className="flex gap-3 items-center">
-            <Link to="/" className="flex items-end space-x-2">
+          <Link to="/" className={`${isActive('/jobs') ? 'flex items-end space-x-2' : ''}`}>
+
               <div className="text-2xl font-bold flex items-end text-careersng-navy">
                 <img src="../../Images/logo.png" alt="" className="w-8" />
                 <h4 className="text-xl -ml-2 font-extrabold text-careersng-navy">
@@ -154,33 +35,76 @@ const Navbar = () => {
 
             {/* Desktop Navigation */}
             <div className="hidden mt-1 md:flex items-center space-x-4">
-              <Link to="/jobs" className={`${isActive('/jobs')} hover:text-careersng-purple transition-colors`}>
+              <Link to="/jobs" className={`${isActive('/jobs')} hover:text-red-700 transition-colors`}>
                 Find Jobs
               </Link>
-              <Link to="/categories" className={`${isActive('/categories')} hover:text-careersng-purple transition-colors`}>
+              <Link to="/categories" className={`${isActive('/categories')} hover:text-red-700  transition-colors`}>
                 Categories
               </Link>
-              <Link to="/about" className={`${isActive('/about')} hover:text-careersng-purple transition-colors`}>
+              <Link to="/about" className={`${isActive('/about')} hover:text-red-700  transition-colors`}>
                 How It Works
               </Link>
-              <Link to="/blog" className={`${isActive('/blog')} hover:text-careersng-purple transition-colors`}>
+              <Link to="/blog" className={`${isActive('/blog')} hover:text-red-700 transition-colors`}>
                 Blog
               </Link>
             </div>
           </div>
 
           {/* Authentication Buttons */}
-          <div className="hidden md:flex items-center space-x-1">
-            <Link to="/login">
-              <button className="border text-sm border-gray-800 p-2 px-5 items-center gap-2">
-                Log In
-              </button>
-            </Link>
-            <Link to="/register">
-              <button className="bg-[#ee774f] text-white text-sm hover:bg-careersng-purple-dark p-2 px-5 flex items-center">
-                Sign Up
-              </button>
-            </Link>
+          <div className="hidden md:flex items-center space-x-2">
+
+          {
+            loggedIn ? ( <>
+              {
+                user.role === 'client' && <Link to="/post_job" className={`${isActive('/post_job')} hover:text-red-700 transition-colors`}>
+                Post Job
+              </Link>
+              }
+
+<h2>|</h2>
+
+              <Link to="/dashboard" className={`${isActive('/dashboard')} hover:text-red-700 transition-colors`}>
+                Dashboard
+              </Link>
+          <h2>|</h2>
+            
+          <div className="flex items-center">
+            <div className="h-7 min-w-7 rounded-full overflow-hidden bg-gray-200 mr-1">
+              {user.image ? (
+                <img src={user.image} alt={user.username} className="h-full w-full object-cover" />
+              ) : (
+                <div className="h-full w-full flex items-center justify-center bg-careersng-purple text-white font-medium">
+                  {user.username.charAt(0)}
+                </div>
+              )}
+            </div>
+            <div className="flex flex-col">
+              <h4 className="font-extrabold text-xs">{user.username}</h4>
+              <span className="text-[10px] text-gray-500">
+                {user.email}
+              </span>
+            </div>
+          </div>
+                  </>
+            ) : 
+            (
+            <>
+              <Link to="/login">
+                <button className="border text-sm border-gray-800 p-2 px-5 items-center gap-2">
+                  Log In
+                </button>
+              </Link>
+              <Link to="/register">
+                <button className="bg-[#ee774f] text-white text-sm hover:bg-careersng-purple-dark p-2 px-5 flex items-center">
+                  Sign Up
+                </button>
+              </Link>
+            </>  
+            )
+          }
+          
+
+
           </div>
 
           {/* Mobile Menu Button */}
@@ -214,6 +138,36 @@ const Navbar = () => {
 
         {/* Navigation Links */}
         <div className="flex bg-white h-[100vh] flex-col px-6 py-4 space-y-4">
+          {
+            loggedIn && (
+              <>
+              
+            
+          <div className="flex items-center">
+            <div className="h-7 min-w-7 rounded-full overflow-hidden bg-gray-200 mr-1">
+              {user.image ? (
+                <img src={user.image} alt={user.username} className="h-full w-full object-cover" />
+              ) : (
+                <div className="h-full w-full flex items-center justify-center bg-careersng-purple text-white font-medium">
+                  {user.username.charAt(0)}
+                </div>
+              )}
+            </div>
+            <div className="flex flex-col">
+              <h4 className="font-extrabold text-xs">{user.username}</h4>
+              <span className="text-[10px] text-gray-500">
+                {user.email}
+              </span>
+            </div>
+          </div>
+
+          <Link to="/dashboard" className={`${isActive('/dashboard')} hover:text-red-700 transition-colors`}>
+                Dashboard
+              </Link>
+              </>
+            )
+          }
+
           <Link to="/jobs" onClick={() => setIsMenuOpen(false)} className={`text-lg ${isActive('/jobs')} hover:text-careersng-purple`}>
             Find Jobs
           </Link>
@@ -239,17 +193,52 @@ const Navbar = () => {
             Build CV
           </Link>
 
-          <div className="space-y-3">
-            <Link to="/login" onClick={() => setIsMenuOpen(false)}>
-              <button className="w-full bg-blue-950 text-white p-2">
-                Log In
-              </button>
-            </Link>
-            <Link to="/register" onClick={() => setIsMenuOpen(false)}>
-              <button className="w-full p-2 bg-careersng-purple text-white hover:bg-careersng-purple-dark">
-                Sign Up
-              </button>
-            </Link>
+          <div className="flex flex-col gap-3">
+
+
+          {
+            loggedIn ? ( <>
+              <Link to='/'>Logout</Link>
+                  </>
+            ) : 
+            (
+            <>
+              <Link to="/login">
+                  Log In
+              </Link>
+              <Link to="/register">
+                  Sign Up
+              </Link>
+            </>  
+            )
+          }
+
+
+          
+
+              {/* <div className="flex items-center justify-between">
+                <div className="flex items-center">
+                  <div className="h-7 min-w-7 rounded-full overflow-hidden bg-gray-200 mr-1">
+                    {user.image ? (
+                      <img src={user.image} alt={user.username} className="h-full w-full object-cover" />
+                    ) : (
+                      <div className="h-full w-full flex items-center justify-center bg-careersng-purple text-white font-medium">
+                        {user.username.charAt(0)}
+                      </div>
+                    )}
+                  </div>
+                  <div className="flex flex-col">
+                    <h4 className="font-extrabold text-xs">{user.username}</h4>
+                    <span className="text-[10px] text-gray-500">
+                      {user.email}
+                    </span>
+                  </div>
+                </div>
+
+                <Link to='/'>Logout</Link>
+              </div> */}
+
+
           </div>
         </div>
       </div>
