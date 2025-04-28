@@ -243,7 +243,7 @@ const Navbar = () => {
         </div>
 
         {/* Navigation Links */}
-        <div className="flex bg-white h-[100vh] text-xl font-semibold flex-col px-6 py-4 space-y-5">
+        <div className="flex bg-white h-[100vh] text-xl font-semibold flex-col px-6 py-6 space-y-5">
           {user && (
             <>
               <div className="flex items-center">
@@ -375,9 +375,9 @@ const Navbar = () => {
                 <Link to="/">Logout</Link>
               </>
             ) : (
-              <div className="flex flex-col gap-5">
-                <Link to="/login" className="text-gray-700">Log In</Link>
-                <Link to="/register" className="text-gray-700">Sign Up</Link>
+              <div className="grid grid-cols-2 gap-5">
+                <Link to="/login" className="text-gray-700 p-3 text-center border border-gray-300">Log In</Link>
+                <Link to="/register" className="text-white p-3 bg-[#ee774f] text-center">Sign Up</Link>
               </div>
             )}
 

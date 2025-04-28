@@ -177,7 +177,7 @@ const Home = () => {
       <section className="bg-[#242935] from-careersng-navy to-careersng-navy/90 text-white py-16 md:py-24">
         <div className="container mx-auto">
           <div className="flex flex-col items-center text-center">
-            <h1 className="text-3xl lg:text-6xl font-extrabold leading-tight mb-6">
+            <h1 className="text-3xl lg:text-5xl  font-extrabold leading-tight mb-6">
               Find Remote, Freelance & Internship <br className="" />
               <span className="text-[#ed9172]">Jobs in Nigeria</span>
             </h1>
@@ -229,7 +229,7 @@ const Home = () => {
             </p>
           </div>
           
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-6">
             {categories.map((category) => (
               <CategoryCard key={category.slug} {...category} />
             ))}
