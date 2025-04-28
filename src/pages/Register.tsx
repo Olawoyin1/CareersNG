@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-// import axios from "axios";
+import axios from "axios";
 
 import { SlBriefcase } from "react-icons/sl";
 import { FaRegUser } from "react-icons/fa6";
@@ -11,14 +11,17 @@ import { CiMail } from "react-icons/ci";
 import { GoLock } from "react-icons/go";
 import { PiUser } from "react-icons/pi"; // for username
 import { VscEye, VscEyeClosed } from "react-icons/vsc";
+import { toast } from "sonner";
+import Loading from "../components/Loading";
 
 type UserRole = "freelancer" | "client" | "both";
 const Register = () => {
     
-
+  const navigate = useNavigate()
 
   const [role, setRole] = useState<UserRole>("freelancer");
     const [showPassword, setShowPassword] = useState(false);
+    const [loading, setLoading] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
 
@@ -47,28 +50,65 @@ const Register = () => {
       
     },
     validationSchema: validationSchema,
-    onSubmit: async (values, { setSubmitting }) => {
-      try {
-        const payload = {
-                    username: values.username,
-                    email: values.email,
-                    password: values.password,
-                    role: role,
-            };
+// Inside your useFormik or Formik configuration
+onSubmit: async (values, { setSubmitting, resetForm, setErrors }) => {
+  setSubmitting(true); // Optional: set submitting state to true manually
+  setLoading(true)
+  try {
+    // Prepare the data you want to send
+    const payload = {
+      username: values.username,
+      email: values.email,
+      password: values.password,
+      role: role, // Assuming 'role' is defined elsewhere
+    };
 
-            console.log(payload)
-        // await axios.post("http://localhost/register", payload);
-        console.log("Registration successful");
-      } catch (error) {
-        console.error("Registration error:", error);
-      } finally {
-        setSubmitting(false);
-      }
-    },
+    console.log("Submitting payload:", payload);
+
+    // Send the POST request
+    const response = await axios.post("http://localhost:8000/register/", payload);
+
+    console.log("Registration successful:", response.data);
+    toast.success("Registration successful!");
+    resetForm();
+    navigate("/login");
+  } catch (error: any) {
+    console.log("Registration error:", error.response?.data);
+  
+    if (error.response?.status === 400) {
+      const data = error.response.data;
+  
+      // Directly set formik errors if fields exist
+      setErrors({
+        username: data.username ? "Username Already Taken" : "",
+        email: data.email ? data.email[0] : "",
+        password: data.password ? data.password[0] : "", 
+      });
+  
+     
+    } 
+    else if (error.response?.data?.message) {
+      toast.error(`Error: ${error.response.data.message}`);
+    } 
+    else {
+      toast.error("Something went wrong. Please try again.");
+    }
+  } 
+  finally {
+    setSubmitting(false);
+    setLoading(false);
+  }
+  
+},
+
   });
 
   return (
+    
     <div className="py-4 bg-gray-50 flex flex-col justify-center">
+      {
+        loading && <Loading fullPage text="Creating your account..."/>
+      }
       <div className="container">
         <div className="sm:mx-auto sm:w-full sm:max-w-md">
           <h2 className="text-center text-3xl font-bold tracking-tight text-careersng-navy">

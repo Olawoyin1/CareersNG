@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
 *{
-    /* border: 1px solid red;    */
+    /* border: 1px solid red;     */
     box-sizing: border-box !important;
     list-style-type: none;
     /* text-decoration: none; */
@@ -10,7 +10,7 @@
 
 
 
-::placeholder, input{
+::placeholder, input, select{
     font-size: 13px;
     font-family: 'Montserrat';
 }
@@ -33,6 +33,8 @@ p{
     font-family: "Montserrat", sans-serif;
 }
 
+
+
 button{
     cursor: pointer;
 }
@@ -47,6 +49,39 @@ body{
     max-width: 84%;
     margin: 0 auto;
 }
+
+.loader {
+    width: 40px;
+    height: 40px;
+    border: 3px solid navy;
+    border-radius: 50%;
+    display: inline-block;
+    position: relative;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+  }
+  .loader::after {
+    content: '';  
+    box-sizing: border-box;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    border: 3px solid;
+    border-color: #FF3D00 transparent;
+  }
+  
+  @keyframes rotation {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  } 
 
 
 @media (max-width:540px){

@@ -1,8 +1,10 @@
 
 import { useState } from "react";
 import { SlBriefcase } from "react-icons/sl";
-import { CiLocationOn } from "react-icons/ci";
-import { MdOutlineLocationSearching } from "react-icons/md";
+import { GoLocation } from "react-icons/go";
+import { RiSearch2Line } from "react-icons/ri";
+
+
 interface SearchBarProps {
   onSearch?: (query: {
     keyword: string;
@@ -38,7 +40,7 @@ const SearchBar = ({ onSearch, className = "" }: SearchBarProps) => {
         {/* Keyword Input */}
         <div className="relative">
           <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-            <MdOutlineLocationSearching size={20} className="text-gray-400" />
+            <RiSearch2Line size={20} className="text-gray-400" />
           </div>
           <input
             type="text"
@@ -52,7 +54,7 @@ const SearchBar = ({ onSearch, className = "" }: SearchBarProps) => {
         {/* Location Input */}
         <div className="relative">
           <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-            <CiLocationOn size={20} className="text-gray-400" />
+            <GoLocation size={20} className="text-gray-400" />
           </div>
           <input
             type="text"

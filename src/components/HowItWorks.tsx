@@ -1,5 +1,6 @@
-
-import { Search, FilePenLine, CreditCard } from "lucide-react";
+import { GoCreditCard } from "react-icons/go";
+import { TfiPencilAlt } from "react-icons/tfi";
+import { TfiSearch } from "react-icons/tfi";
 
 const HowItWorks = () => {
   const steps = [
@@ -7,7 +8,7 @@ const HowItWorks = () => {
       id: 1,
       title: "Find the Right Job",
       description: "Browse through hundreds of remote, freelance, and internship opportunities across Nigeria.",
-      icon: <Search size={28} />,
+      icon: <TfiSearch size={28} />,
       color: "bg-careersng-purple/10",
       iconColor: "text-careersng-purple",
     },
@@ -15,7 +16,7 @@ const HowItWorks = () => {
       id: 2,
       title: "Submit Your Proposal",
       description: "Create a compelling application showcasing your skills and experience to stand out.",
-      icon: <FilePenLine size={28} />,
+      icon: <TfiPencilAlt size={28} />,
       color: "bg-blue-100",
       iconColor: "text-blue-600",
     },
@@ -23,7 +24,7 @@ const HowItWorks = () => {
       id: 3,
       title: "Get Hired & Earn",
       description: "Connect with clients, complete projects, and receive payments securely through our platform.",
-      icon: <CreditCard size={28} />,
+      icon: <GoCreditCard size={28} />,
       color: "bg-green-100",
       iconColor: "text-green-600",
     },

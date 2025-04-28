@@ -1,5 +1,4 @@
-
-import { Quote } from "lucide-react";
+import { BiSolidQuoteLeft } from "react-icons/bi";
 
 interface TestimonialProps {
   quote: string;
@@ -13,7 +12,7 @@ const TestimonialCard = ({ quote, name, role, company, avatarUrl }: TestimonialP
   return (
     <div className="card p-6 h-full bg-green-200/9 rounded-xl flex flex-col">
       <div className="mb-4 text-careersng-purple/20">
-        <Quote size={36} />
+        <BiSolidQuoteLeft size={36} />
       </div>
       <p className="text-careersng-gray-dark flex-1 mb-6 italic">"{quote}"</p>
       <div className="flex items-center">

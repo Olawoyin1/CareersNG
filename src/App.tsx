@@ -88,6 +88,8 @@ import AdminJobs from "./pages/Admin/AdminJobs";
 import AdminBlogs from "./pages/Admin/AdminBlogs";
 import Categories from "./pages/Categories";
 import HowItWorks from "./pages/HowItWorks";
+import { UserProvider } from "./components/UserContext";
+import Dashboard from "./pages/Dashboard";
 
 function App() {
   const main = createBrowserRouter(
@@ -97,6 +99,7 @@ function App() {
         <Route path="/" element={<SharedLayout />}>
           <Route index element={<Home />} />
           <Route path="jobs" element={<Jobs />} />
+          <Route path="dashboard" element={<Dashboard />} />
           <Route path="categories" element={<Categories />} />
           <Route path="how_it_works" element={<HowItWorks />} />
           <Route path="post_job" element={<PostJob />} />
@@ -121,8 +124,11 @@ function App() {
 
   return (
     <>
+    <UserProvider>
+
       <Toaster position="top-right" expand={false} richColors />
       <RouterProvider router={main} />
+    </UserProvider>
     </>
   );
 }

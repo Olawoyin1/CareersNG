@@ -1,6 +1,7 @@
 
 import { ReactNode } from "react";
 import { Link } from "react-router-dom";
+import { IoIosArrowRoundForward } from "react-icons/io";
 
 interface CategoryCardProps {
   title: string;
@@ -22,8 +23,8 @@ const CategoryCard = ({ title, icon, jobCount, slug, }: CategoryCardProps) => {
             {icon}
           </div>
           <h3 className="text-lg font-bold mb-1">{title}</h3>
-          <p className="text-sm text-gray-500">
-            {jobCount} {jobCount === 1 ? 'job' : 'jobs'} available
+          <p className="text-sm flex gap-2 items-center text-gray-500">
+            {jobCount} {jobCount === 1 ? 'job' : 'jobs'} available <IoIosArrowRoundForward  size={17}/>
           </p>
         </div>
       </div>

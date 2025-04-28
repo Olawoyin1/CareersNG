@@ -1,19 +1,30 @@
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X } from "lucide-react";
+import {  X } from "lucide-react";
+import { VscMenu } from "react-icons/vsc";
 import { ChevronDown } from "lucide-react";
+import { UserContext } from "./UserContext";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [loggedIn, _setLoggedIn] = useState(false);
-  const [user, _setUser] = useState({
-    email: "yustee2017@gmail.com",
-    password: "Olamilekan@9",
-    role: "client",
-    username: "Olawoyin",
-    image: "",
-    is_admin: "true",
-  });
+  const [loggedIn, _setLoggedIn] = useState(true);
+  // const [user, _setUser] = useState({
+  //   email: "yustee2017@gmail.com",
+  //   password: "Olamilekan@9",
+  //   role: "client",
+  //   username: "Olawoyin",
+  //   image: "",
+  //   is_admin: "true",
+  // });
+
+  const context = useContext(UserContext)
+  if (!context) {
+    throw new Error("useContext must be used within a UserProvider");
+  }
+  const {user} = context
+
+  console.log(user)
+
   const [open, setOpen] = useState(false);
   const location = useLocation();
   const dropdownRef = useRef<HTMLDivElement>(null);
@@ -111,25 +122,19 @@ const Navbar = () => {
                       className="flex items-center gap-2 focus:outline-none"
                     >
                       <div className="h-8 w-8 rounded-full overflow-hidden bg-gray-200">
-                        {user.image ? (
-                          <img
-                            src={user.image}
-                            alt={user.username}
-                            className="h-full w-full object-cover"
-                          />
-                        ) : (
+                        
                           <div className="h-full w-full flex items-center justify-center bg-careersng-purple text-white font-semibold text-xs">
-                            {user.username.charAt(0)}
+                            {user?.username.charAt(0)}
                           </div>
-                        )}
+                        
                       </div>
 
                       <div className="flex flex-col items-start">
                         <h4 className="font-semibold text-xs">
-                          {user.username}
+                          {user?.username}
                         </h4>
                         <span className="text-[10px] text-gray-500">
-                          {user.email}
+                          {user?.email}
                         </span>
                       </div>
 
@@ -140,7 +145,7 @@ const Navbar = () => {
                     <div
                       className={`absolute flex flex-col gap-3 p-4 right-0 mt-2 w-48 bg-white shadow rounded-md z-50 border border-gray-300 transform transition-all duration-300 ease-in-out ${open ? "translate-x-0 opacity-100"    : "translate-x-10 opacity-0 pointer-events-none" }`}
                     >
-                      {user.is_admin  && (
+                      {user?.is_staff  && (
                         <Link
                           to="/admin"
                           className={`${isActive(
@@ -151,7 +156,7 @@ const Navbar = () => {
                         </Link>
                       )}
 
-                      {user.role === "client" && (
+                      {user?.role === "client" && (
                         <Link
                           to="/post_job"
                           className={`${isActive(
@@ -206,7 +211,7 @@ const Navbar = () => {
               className="text-gray-500 hover:text-careersng-purple"
               onClick={() => setIsMenuOpen(true)}
             >
-              <Menu size={24} />
+              <VscMenu size={24} />
             </button>
           </div>
         </div>
@@ -243,25 +248,19 @@ const Navbar = () => {
             <>
               <div className="flex items-center">
                 <div className="h-10 min-w-10 rounded-full overflow-hidden bg-gray-200 mr-2">
-                  {user.image ? (
-                    <img
-                      src={user.image}
-                      alt={user.username}
-                      className="h-full w-full object-cover"
-                    />
-                  ) : (
+                 
                     <div className="h-full w-full flex items-center justify-center bg-careersng-purple text-white ">
-                      {user.username.charAt(0)}
+                      {user?.username.charAt(0)}
                     </div>
-                  )}
+                  
                 </div>
                 <div className="flex flex-col">
-                  <h4 className="font-extrabold ">{user.username}</h4>
-                  <span className="text-sm text-gray-500">{user.email}</span>
+                  <h4 className="font-extrabold ">{user?.username}</h4>
+                  <span className="text-sm text-gray-500">{user?.email}</span>
                 </div>
               </div>
 
-              {user.is_admin  && (
+              {user?.is_staff  && (
                 <Link
                   to="/admin"
                   className={`${isActive(
@@ -281,7 +280,7 @@ const Navbar = () => {
                 Dashboard
               </Link>
               
-              {user.role === "client" && (
+              {user?.role === "client" && (
                 <Link
                   to="/post_job"
                   className={`${isActive(
@@ -373,10 +372,10 @@ const Navbar = () => {
                 <Link to="/">Logout</Link>
               </>
             ) : (
-              <>
+              <div className="flex flex-col gap-5">
                 <Link to="/login" className="text-gray-700">Log In</Link>
                 <Link to="/register" className="text-gray-700">Sign Up</Link>
-              </>
+              </div>
             )}
 
            

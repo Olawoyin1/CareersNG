@@ -3,20 +3,23 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { 
   Code, 
-  PenTool, 
-  BarChart, 
-  FileText, 
-  Camera, 
-  Laptop, 
-  BookOpen, 
-  Users, 
   ArrowRight 
 } from "lucide-react";
+
+import { IoDocumentTextOutline } from "react-icons/io5";
 import SearchBar from "../components/SearchBar";
 import JobCard from "../components/JobCard";
 import CategoryCard from "../components/CategoryCard";
 import TestimonialCard from "../components/TestimonialCard";
 import HowItWorks from "../components/HowItWorks";
+import { BsVectorPen } from "react-icons/bs";
+import { GrLineChart } from "react-icons/gr";
+import { SlCamera } from "react-icons/sl";
+import { AiOutlineLaptop } from "react-icons/ai";
+import { BsBook } from "react-icons/bs";
+import { PiUsersLight } from "react-icons/pi";
+
+
 
 // Mock data for featured jobs
 const featuredJobs = [
@@ -83,49 +86,49 @@ const categories = [
   },
   {
     title: "Design",
-    icon: <PenTool size={24} />,
+    icon: <BsVectorPen size={24} />,
     jobCount: 93,
     slug: "design",
     color: "bg-pink-100"
   },
   {
     title: "Marketing",
-    icon: <BarChart size={24} />,
+    icon: <GrLineChart size={24} />,
     jobCount: 78,
     slug: "marketing",
     color: "bg-orange-100"
   },
   {
     title: "Writing",
-    icon: <FileText size={24} />,
+    icon: <IoDocumentTextOutline size={24} />,
     jobCount: 105,
     slug: "writing",
     color: "bg-green-100"
   },
   {
     title: "Photography",
-    icon: <Camera size={24} />,
+    icon: <SlCamera size={24} />,
     jobCount: 42,
     slug: "photography",
     color: "bg-purple-100"
   },
   {
     title: "IT Support",
-    icon: <Laptop size={24} />,
+    icon: <AiOutlineLaptop size={24} />,
     jobCount: 67,
     slug: "it-support",
     color: "bg-yellow-100"
   },
   {
     title: "Teaching",
-    icon: <BookOpen size={24} />,
+    icon: <BsBook size={24} />,
     jobCount: 51,
     slug: "teaching",
     color: "bg-red-100"
   },
   {
     title: "Customer Service",
-    icon: <Users size={24} />,
+    icon: <PiUsersLight size={24} />,
     jobCount: 88,
     slug: "customer-service",
     color: "bg-teal-100"

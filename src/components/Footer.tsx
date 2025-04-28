@@ -1,12 +1,13 @@
 
 import { Link } from "react-router-dom";
-import { 
-  Facebook, 
-  Twitter, 
-  Instagram, 
-  Linkedin, 
+import {
   ArrowRight 
 } from "lucide-react";
+
+import { FaSquareXTwitter } from "react-icons/fa6";
+import { FaFacebookSquare } from "react-icons/fa";
+import { IoLogoLinkedin } from "react-icons/io5";
+import { RiInstagramFill } from "react-icons/ri";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -30,16 +31,16 @@ const Footer = () => {
             </p>
             <div className="mt-6 flex space-x-4">
               <a href="#" className="text-gray-300 hover:text-careersng-purple">
-                <Facebook size={20} />
+                <FaSquareXTwitter size={20} />
               </a>
               <a href="#" className="text-gray-300 hover:text-careersng-purple">
-                <Twitter size={20} />
+                <FaFacebookSquare size={20} />
               </a>
               <a href="#" className="text-gray-300 hover:text-careersng-purple">
-                <Instagram size={20} />
+                <IoLogoLinkedin size={20} />
               </a>
               <a href="#" className="text-gray-300 hover:text-careersng-purple">
-                <Linkedin size={20} />
+                <RiInstagramFill size={20} />
               </a>
             </div>
           </div>
@@ -105,15 +106,15 @@ const Footer = () => {
               Subscribe to our newsletter for updates.
             </p>
             <form className="mt-4">
-              <div className="flex border border-gray-100">
+              <div className="flex ">
                 <input
                   type="email"
                   placeholder="Your email"
-                  className="w-full rounded-l-lg px-4 py-2 focus:outline-none text-careersng-navy"
+                  className="w-full border border-gray-700 rounded-l-lg px-4 py-2 focus:outline-none text-careersng-navy"
                 />
                 <button
                   type="submit"
-                  className="rounded-r-lg bg-careersng-purple px-3 py-2 text-white hover:bg-careersng-purple-dark"
+                  className="rounded-r-lg bg-[#ee774f] px-3 py-2 text-white hover:bg-careersng-purple-dark"
                 >
                   <ArrowRight size={20} />
                 </button>

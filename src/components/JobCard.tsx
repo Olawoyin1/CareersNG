@@ -1,4 +1,4 @@
-import {  MapPin, Briefcase } from "lucide-react";
+import { GoLocation } from "react-icons/go";
 import { Link } from "react-router-dom";
 
 import { TfiTimer } from "react-icons/tfi";
@@ -66,11 +66,11 @@ const JobCard = ({
 
           <div className="flex flex-wrap gap-3 text-sm text-gray-500">
             <div className="flex items-center">
-              <MapPin size={16} className="mr-1" />
+              <GoLocation size={16} className="mr-1" />
               <span>{location}</span>
             </div>
             <div className="flex items-center">
-              <Briefcase size={16} className="mr-1" />
+              <SlBriefcase size={16} className="mr-1" />
               <span>{type}</span>
             </div>
 
@@ -84,13 +84,13 @@ const JobCard = ({
           </div>
 
           <div className="flex items-center  justify-between">
-            <span className="inline-block px-3 py-1 text-sm  bg-blue-100 text-blue-900 rounded">
+            <span className="inline-block px-3 py-1 text-xs  bg-blue-100 text-blue-900 rounded">
               {jobType}
             </span>
 
             <Link
               to={`/job_details`}
-              className="text-sm font-medium text-careersng-purple hover:text-careersng-purple-dark"
+              className="text-xs font-medium text-careersng-purple hover:text-careersng-purple-dark"
             >
               View Details
             </Link>
