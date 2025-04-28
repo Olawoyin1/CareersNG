@@ -320,7 +320,7 @@ const Navbar = () => {
                 <Link
                 onClick={() => setIsMenuOpen(false)}
                   to="/admin"
-                  className={`text-xl ${isActive(
+                  className={`text-[17.7px] ${isActive(
                     "/admin"
                   )} hover:text-red-700 transition-colors  `}
                 >
@@ -331,7 +331,7 @@ const Navbar = () => {
               <Link 
                 to="/dashboard"
                 onClick={() => setIsMenuOpen(false)}
-                className={`text-xl ${isActive(
+                className={`text-[17.7px] ${isActive(
                   "/dashboard"
                 )} hover:text-red-700 transition-colors`}
               >
@@ -342,7 +342,7 @@ const Navbar = () => {
                 <Link
                 onClick={() => setIsMenuOpen(false)}
                   to="/post_job"
-                  className={`text-xl ${isActive(
+                  className={`text-[17.7px] ${isActive(
                     "/post_job"
                   )} hover:text-red-700 transition-colors `}
                 >
@@ -357,7 +357,7 @@ const Navbar = () => {
           <Link
             to="/jobs"
             onClick={() => setIsMenuOpen(false)}
-            className={`text-xl ${isActive(
+            className={`text-[17.7px] ${isActive(
               "/jobs"
             )} hover:text-careersng-purple`}
           >
@@ -366,7 +366,7 @@ const Navbar = () => {
           <Link
             to="/categories"
             onClick={() => setIsMenuOpen(false)}
-            className={`text-xl ${isActive(
+            className={`text-[17.7px] ${isActive(
               "/categories"
             )} hover:text-careersng-purple`}
           >
@@ -375,7 +375,7 @@ const Navbar = () => {
           <Link
             to="/how_it_works"
             onClick={() => setIsMenuOpen(false)}
-            className={`text-xl ${isActive(
+            className={`text-[17.7px] ${isActive(
               "/how_it_works"
             )} hover:text-careersng-purple`}
           >
@@ -384,7 +384,7 @@ const Navbar = () => {
           <Link
             to="/blog"
             onClick={() => setIsMenuOpen(false)}
-            className={`text-xl ${isActive(
+            className={`text-[17.7px] ${isActive(
               "/blog"
             )} hover:text-careersng-purple`}
           >
@@ -393,7 +393,7 @@ const Navbar = () => {
           <Link
             to="/contact"
             onClick={() => setIsMenuOpen(false)}
-            className={`text-xl ${isActive(
+            className={`text-[17.7px] ${isActive(
               "/contact"
             )} hover:text-careersng-purple`}
           >
@@ -402,7 +402,7 @@ const Navbar = () => {
           <Link
             to="/faq"
             onClick={() => setIsMenuOpen(false)}
-            className={`text-xl ${isActive(
+            className={`text-[17.7px] ${isActive(
               "/faq"
             )} hover:text-careersng-purple`}
           >
@@ -411,7 +411,7 @@ const Navbar = () => {
           <Link
             to="/resume"
             onClick={() => setIsMenuOpen(false)}
-            className={`text-xl ${isActive(
+            className={`text-[17.7px] ${isActive(
               "/resume"
             )} hover:text-careersng-purple`}
           >
@@ -420,7 +420,7 @@ const Navbar = () => {
           <Link
             to="/cv"
             onClick={() => setIsMenuOpen(false)}
-            className={`text-xl ${isActive("/cv")} hover:text-careersng-purple`}
+            className={`text-[17.7px] ${isActive("/cv")} hover:text-careersng-purple`}
           >
             Build CV
           </Link>
@@ -432,8 +432,8 @@ const Navbar = () => {
               </>
             ) : (
               <div className="grid grid-cols-2 gap-5">
-                <Link to="/login" onClick={() => setIsMenuOpen(false)} className="text-gray-700 p-3 text-center border border-gray-300">Log In</Link>
-                <Link to="/register" onClick={() => setIsMenuOpen(false)} className="text-white p-3 bg-[#ee774f] text-center">Sign Up</Link>
+                <Link to="/login" onClick={() => setIsMenuOpen(false)} className="text-gray-700 text-sm p-3 text-center border border-gray-300">Log In</Link>
+                <Link to="/register" onClick={() => setIsMenuOpen(false)} className="text-white p-3 text-sm bg-[#ee774f] text-center">Sign Up</Link>
               </div>
             )}
 
