@@ -36,7 +36,8 @@ const SignIn = () => {
   useEffect(() => {
     if (user) {
       // Redirect authenticated users to the dashboard or home page
-      navigate('/dashboard');
+      navigate('/');
+      toast("Welcome back to CareermatterNG — Your next opportunity awaits! 🚀")
     }
   }, [user, navigate]);
 
@@ -162,7 +163,7 @@ const SignIn = () => {
                         ? 'border-red-700 focus:border-red-800'
                         : 'border-gray-300 focus:ring-careersng-purple focus:border-careersng-purple'
                     }`}
-                    placeholder="your@email.com"
+                    placeholder="example@email.com"
                   />
                 </div>
               </div>
@@ -241,7 +242,8 @@ const SignIn = () => {
                   disabled={formik.isSubmitting}
                   className="w-full flex text-white text-sm justify-center rounded-md py-3 bg-[#ee774f] hover:bg-careersng-purple-dark disabled:opacity-50"
                 >
-                  {formik.isSubmitting ? "Signing in..." : "Sign in"}
+                  {/* {formik.isSubmitting ? "Signing in..." : "Sign in"} */}
+                  {formik.isSubmitting ? "Signing In..." : "Sign in"}
                 </button>
               </div>
             </form>

@@ -1,21 +1,27 @@
 import { useContext, useEffect, useRef, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import {  X } from "lucide-react";
 import { VscMenu } from "react-icons/vsc";
 import { ChevronDown } from "lucide-react";
 import { UserContext } from "./UserContext";
+import axios from "axios";
+import Loading from "./Loading";
+import { toast } from "sonner";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [loading, setLoading] = useState(false);
+  
   
 
   const context = useContext(UserContext)
   if (!context) {
     throw new Error("useContext must be used within a UserProvider");
   }
-  const {user} = context
+  const {user, setUser} = context
 
-  console.log(user)
+  // console.log(user)
+  const navigate = useNavigate()
 
   const [open, setOpen] = useState(false);
   const location = useLocation();
@@ -44,8 +50,57 @@ const Navbar = () => {
       : "text-gray-600";
   };
 
+
+
+
+  const handleLogout = async () => {
+    setLoading(true)
+    try {
+      const refresh_token = localStorage.getItem("refresh_token");
+      const access_token = localStorage.getItem("access_token");
+  
+      if (!refresh_token || !access_token) {
+        console.error("No tokens found. Cannot logout.");
+        return;
+      }
+  
+      console.log("Logging user out...");
+  
+      const response = await axios.post(
+        'http://localhost:8000/logout/', 
+        { refresh_token: refresh_token }, // <-- send an object, not just a string
+        {
+          headers: {
+            "Content-Type": "application/json", // <-- fix the Content-Type
+            "Authorization": `Bearer ${access_token}`
+          }
+        }
+      );
+  
+      console.log(response.data);
+  
+      // Optional: clear local storage and redirect to login
+      localStorage.removeItem("access_token");
+      localStorage.removeItem("refresh_token");
+      localStorage.removeItem("user");
+      setUser(null)
+  
+      // redirect to login or home
+      navigate('/'); // if you are using react-router
+      toast("You have been logged out successfully!")
+    } catch (error: any) {
+      console.error("Logout error:", error);
+    }finally{
+      setLoading(false)
+    }
+  }
+  
+
   return (
     <nav className="sticky top-0 z-50 w-full bg-white/80 backdrop-blur-md border-b border-gray-100">
+      {
+        loading && <Loading fullPage text="Signing you out, please wait..."/>
+      }
       <div className="container mx-auto">
         <div className="flex justify-between items-center h-16">
           <div className="flex gap-3 items-center">
@@ -150,7 +205,7 @@ const Navbar = () => {
                           to="/admin"
                           className={`${isActive(
                             "/admin"
-                          )} hover:text-red-700 transition-colors text-sm font-medium`}
+                          )} hover:text-blue-900 transition-colors text-sm font-medium`}
                         >
                           Admin
                         </Link>
@@ -161,7 +216,7 @@ const Navbar = () => {
                           to="/post_job"
                           className={`${isActive(
                             "/post_job"
-                          )} hover:text-red-700 transition-colors text-sm font-medium`}
+                          )} hover:text-blue-900 transition-colors text-sm font-medium`}
                         >
                           Post Job
                         </Link>
@@ -171,7 +226,7 @@ const Navbar = () => {
                         to="/dashboard"
                         className={`${isActive(
                           "/dashboard"
-                        )} hover:text-red-700 transition-colors text-sm font-medium`}
+                        )} hover:text-blue-900 transition-colors text-sm font-medium`}
                       >
                         Dashboard
                       </Link>
@@ -179,8 +234,9 @@ const Navbar = () => {
                         onClick={() => {
                           // handle logout here
                           setOpen(false);
+                          handleLogout()
                         }}
-                        className="w-full text-left hover:text-red-700 transition-colors text-sm font-medium"
+                        className="w-full text-left hover:text-blue-900 transition-colors text-sm font-medium"
                       >
                         Logout
                       </button>
@@ -247,7 +303,7 @@ const Navbar = () => {
           {user && (
             <>
               <div className="flex items-center">
-                <div className="h-10 min-w-10 rounded-full overflow-hidden bg-gray-200 mr-2">
+                <div className="h-12 min-w-12 rounded-full overflow-hidden bg-gray-200 mr-2">
                  
                     <div className="h-full w-full flex items-center justify-center bg-careersng-purple text-white ">
                       {user?.username.charAt(0)}
@@ -372,12 +428,12 @@ const Navbar = () => {
           <div className="flex flex-col gap-3">
             {user ? (
               <>
-                <Link to="/">Logout</Link>
+                <button onClick={handleLogout} className="border-0 bg-gray-100 font-semibold p-3">Logout</button>
               </>
             ) : (
               <div className="grid grid-cols-2 gap-5">
-                <Link to="/login" className="text-gray-700 p-3 text-center border border-gray-300">Log In</Link>
-                <Link to="/register" className="text-white p-3 bg-[#ee774f] text-center">Sign Up</Link>
+                <Link to="/login" onClick={() => setIsMenuOpen(false)} className="text-gray-700 p-3 text-center border border-gray-300">Log In</Link>
+                <Link to="/register" onClick={() => setIsMenuOpen(false)} className="text-white p-3 bg-[#ee774f] text-center">Sign Up</Link>
               </div>
             )}
 

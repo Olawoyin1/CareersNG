@@ -48,7 +48,7 @@ const Footer = () => {
           {/* Quick Links */}
           <div>
             <h3 className="text-lg font-semibold">Quick Links</h3>
-            <ul className="mt-4 space-y-3">
+            <ul className="mt-4 text-sm space-y-3">
               <li>
                 <Link to="/jobs" className="text-gray-300 hover:text-careersng-purple">
                   Find Jobs
@@ -60,7 +60,7 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <Link to="/about" className="text-gray-300 hover:text-careersng-purple">
+                <Link to="/how_it_works" className="text-gray-300 hover:text-careersng-purple">
                   How It Works
                 </Link>
               </li>
@@ -75,7 +75,7 @@ const Footer = () => {
           {/* Resources */}
           <div>
             <h3 className="text-lg font-semibold">Resources</h3>
-            <ul className="mt-4 space-y-3">
+            <ul className="mt-4 text-sm space-y-3">
               <li>
                 <Link to="/privacy" className="text-gray-300 hover:text-careersng-purple">
                   Privacy Policy
