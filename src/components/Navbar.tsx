@@ -299,7 +299,7 @@ const Navbar = () => {
         </div>
 
         {/* Navigation Links */}
-        <div className="flex bg-white h-[100vh] text-xl font-semibold flex-col px-6 py-6 space-y-5">
+        <div className="flex bg-white h-[100vh]  font-semibold flex-col px-6 py-6 space-y-5">
           {user && (
             <>
               <div className="flex items-center">
@@ -320,7 +320,7 @@ const Navbar = () => {
                 <Link
                 onClick={() => setIsMenuOpen(false)}
                   to="/admin"
-                  className={`${isActive(
+                  className={`text-xl ${isActive(
                     "/admin"
                   )} hover:text-red-700 transition-colors  `}
                 >
@@ -331,7 +331,7 @@ const Navbar = () => {
               <Link 
                 to="/dashboard"
                 onClick={() => setIsMenuOpen(false)}
-                className={`${isActive(
+                className={`text-xl ${isActive(
                   "/dashboard"
                 )} hover:text-red-700 transition-colors`}
               >
@@ -342,7 +342,7 @@ const Navbar = () => {
                 <Link
                 onClick={() => setIsMenuOpen(false)}
                   to="/post_job"
-                  className={`${isActive(
+                  className={`text-xl ${isActive(
                     "/post_job"
                   )} hover:text-red-700 transition-colors `}
                 >
