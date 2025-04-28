@@ -7,15 +7,7 @@ import { UserContext } from "./UserContext";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [loggedIn, _setLoggedIn] = useState(true);
-  // const [user, _setUser] = useState({
-  //   email: "yustee2017@gmail.com",
-  //   password: "Olamilekan@9",
-  //   role: "client",
-  //   username: "Olawoyin",
-  //   image: "",
-  //   is_admin: "true",
-  // });
+  
 
   const context = useContext(UserContext)
   if (!context) {
@@ -48,7 +40,7 @@ const Navbar = () => {
 
   const isActive = (path: string) => {
     return location.pathname === path
-      ? "text-blue-900 underline font-extrabold"
+      ? "text-red-700 underline font-extrabold"
       : "text-gray-600";
   };
 
@@ -77,15 +69,23 @@ const Navbar = () => {
                 to="/jobs"
                 className={`${isActive(
                   "/jobs"
-                )} hover:text-red-700 transition-colors`}
+                )} hover:text-blue-900 transition-colors`}
               >
                 Find Jobs
+              </Link>
+              <Link
+                to="/post_job"
+                className={`${isActive(
+                  "/post_job"
+                )} hover:text-blue-900 transition-colors`}
+              >
+                Post Job
               </Link>
               <Link
                 to="/categories"
                 className={`${isActive(
                   "/categories"
-                )} hover:text-red-700  transition-colors`}
+                )} hover:text-blue-900   transition-colors`}
               >
                 Categories
               </Link>
@@ -93,7 +93,7 @@ const Navbar = () => {
                 to="/how_it_works"
                 className={`${isActive(
                   "/how_it_works"
-                )} hover:text-red-700  transition-colors`}
+                )} hover:text-blue-900   transition-colors`}
               >
                 How It Works
               </Link>
@@ -101,7 +101,7 @@ const Navbar = () => {
                 to="/blog"
                 className={`${isActive(
                   "/blog"
-                )} hover:text-red-700 transition-colors`}
+                )} hover:text-blue-900  transition-colors`}
               >
                 Blog
               </Link>
@@ -110,7 +110,7 @@ const Navbar = () => {
 
           {/* Authentication Buttons */}
           <div className="hidden md:flex items-center space-x-2">
-            {loggedIn ? (
+            {user ? (
               <>
                 <div
                   className="relative flex items-center gap-4"
@@ -244,7 +244,7 @@ const Navbar = () => {
 
         {/* Navigation Links */}
         <div className="flex bg-white h-[100vh] text-xl font-semibold flex-col px-6 py-4 space-y-5">
-          {loggedIn && (
+          {user && (
             <>
               <div className="flex items-center">
                 <div className="h-10 min-w-10 rounded-full overflow-hidden bg-gray-200 mr-2">
@@ -262,6 +262,7 @@ const Navbar = () => {
 
               {user?.is_staff  && (
                 <Link
+                onClick={() => setIsMenuOpen(false)}
                   to="/admin"
                   className={`${isActive(
                     "/admin"
@@ -273,6 +274,7 @@ const Navbar = () => {
 
               <Link 
                 to="/dashboard"
+                onClick={() => setIsMenuOpen(false)}
                 className={`${isActive(
                   "/dashboard"
                 )} hover:text-red-700 transition-colors`}
@@ -282,6 +284,7 @@ const Navbar = () => {
               
               {user?.role === "client" && (
                 <Link
+                onClick={() => setIsMenuOpen(false)}
                   to="/post_job"
                   className={`${isActive(
                     "/post_job"
@@ -367,7 +370,7 @@ const Navbar = () => {
           </Link>
 
           <div className="flex flex-col gap-3">
-            {loggedIn ? (
+            {user ? (
               <>
                 <Link to="/">Logout</Link>
               </>

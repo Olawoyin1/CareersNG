@@ -2,6 +2,8 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { useNavigate } from 'react-router-dom';
 import { SlBriefcase } from "react-icons/sl";
+// import { useContext } from 'react';
+// import { UserContext } from '../components/UserContext';
 
 // List of Nigerian States (you can expand this list if necessary)
 const nigerianStates = [
@@ -37,6 +39,13 @@ const PostJob = () => {
     },
   });
 
+
+    // const context = useContext(UserContext)
+    // if (!context) {
+    //   throw new Error("useContext must be used within a UserProvider");
+    // }
+    // const {user} = context
+
   return (
     <div className="flex flex-col">
       <main className="flex-1  bg-gray-50">
@@ -53,9 +62,11 @@ const PostJob = () => {
 
                 <div className=" max-w-4xl w-full  p-4 bg-white rounded-xl">
 
-                    <div className="flex  items-center gap-2  ">
+                    <div className="flex items-center gap-2  ">
+
+                      
                       <SlBriefcase size={20} className="text-blue-900" />
-                      <h1 className="text-xl font-bold text-blue-900">Post A New Job</h1>
+                      <h1 className="text-xl font-bold text-blue-900 mb-1">Post A New Job</h1>
                     </div>
 
                     <p className="text-sm text-gray-600 mb-4">Fill out the details below to post a new job listing on our platform.</p>
