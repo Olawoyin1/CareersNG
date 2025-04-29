@@ -124,8 +124,8 @@ const SignIn = () => {
       }
       <div className="container">
         <div className="sm:mx-auto sm:w-full sm:max-w-md">
-          <h2 className="text-center text-3xl font-bold tracking-tight text-careersng-navy">
-            Sign in to your account
+          <h2 className="text-center text-2xl font-bold tracking-tight text-careersng-navy">
+          Log in to get started
           </h2>
           <p className="mt-2 text-center text-sm text-gray-600">
             Or{" "}

@@ -86,11 +86,7 @@ onSubmit: async (values, { setSubmitting, resetForm, setErrors }) => {
       });
   
      
-    } 
-    else if (error.response?.data?.message) {
-      toast.error(`Error: ${error.response.data.message}`);
-    } 
-    else {
+    }else {
       toast.error("Something went wrong. Please try again.");
     }
   } 
@@ -111,8 +107,8 @@ onSubmit: async (values, { setSubmitting, resetForm, setErrors }) => {
       }
       <div className="container">
         <div className="sm:mx-auto sm:w-full sm:max-w-md">
-          <h2 className="text-center text-3xl font-bold tracking-tight text-careersng-navy">
-            Create a new account
+          <h2 className="text-center text-2xl font-bold tracking-tight text-careersng-navy">
+            Join Careeematter<span className="color">NG</span> today
           </h2>
           <p className="mt-2 text-center text-sm text-gray-600">
             Or{" "}
@@ -308,7 +304,7 @@ onSubmit: async (values, { setSubmitting, resetForm, setErrors }) => {
                       type="checkbox"
                       className="h-4 w-4 text-careersng-purple focus:ring-careersng-purple border-gray-300 rounded"
                     />
-                    <label htmlFor="agreed" className="ml-2 block text-sm text-gray-700">
+                    <label htmlFor="agreed" className="ml-2 block text-xs text-gray-700">
                       I agree to the{" "}
                       <Link to="/terms" className="text-careersng-purple hover:text-careersng-purple-dark">
                         Terms of Service
