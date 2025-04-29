@@ -71,7 +71,7 @@ const SignIn = () => {
         console.log('Logging in with:', values);
     
         // Step 1: Login
-        const response = await axios.post("http://localhost:8000/login/", values);
+        const response = await axios.post("https://careermattersng.onrender.com/login/", values);
         const { access, refresh } = response.data;
         console.log("Tokens:", { access, refresh });
     
@@ -90,7 +90,7 @@ const SignIn = () => {
         const userId = userInfo.user_id;
     
         // Step 4: Fetch user details
-        const userDetailsResponse = await axios.get(`http://localhost:8000/users/${userId}/`);
+        const userDetailsResponse = await axios.get(`https://careermattersng.onrender.com/users/${userId}/`);
         console.log("User details:", userDetailsResponse.data);
     
         setUser(userDetailsResponse.data);

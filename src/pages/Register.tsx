@@ -66,7 +66,7 @@ onSubmit: async (values, { setSubmitting, resetForm, setErrors }) => {
     console.log("Submitting payload:", payload);
 
     // Send the POST request
-    const response = await axios.post("http://localhost:8000/register/", payload);
+    const response = await axios.post("https://careermattersng.onrender.com/register/", payload);
 
     console.log("Registration successful:", response.data);
     toast.success("Registration successful!");

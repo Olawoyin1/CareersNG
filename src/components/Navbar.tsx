@@ -67,7 +67,7 @@ const Navbar = () => {
       console.log("Logging user out...");
   
       const response = await axios.post(
-        'http://localhost:8000/logout/', 
+        'https://careermattersng.onrender.com/logout/', 
         { refresh_token: refresh_token }, // <-- send an object, not just a string
         {
           headers: {
