@@ -66,7 +66,7 @@ const Navbar = () => {
   
       console.log("Logging user out...");
   
-      const response = await axios.post(
+      await axios.post(
         'https://careermattersng.onrender.com/logout/', 
         { refresh_token: refresh_token }, // <-- send an object, not just a string
         {
@@ -77,13 +77,14 @@ const Navbar = () => {
         }
       );
   
-      console.log(response.data);
   
       // Optional: clear local storage and redirect to login
       localStorage.removeItem("access_token");
       localStorage.removeItem("refresh_token");
       localStorage.removeItem("user");
       setUser(null)
+      
+      setIsMenuOpen(false)
   
       // redirect to login or home
       navigate('/'); // if you are using react-router
@@ -338,7 +339,7 @@ const Navbar = () => {
                 Dashboard
               </Link>
               
-              {user?.role === "client" && (
+              {/* {user?.role === "client" && (
                 <Link
                 onClick={() => setIsMenuOpen(false)}
                   to="/post_job"
@@ -348,7 +349,7 @@ const Navbar = () => {
                 >
                   Post Job
                 </Link>
-              )}
+              )} */}
 
               
             </>
@@ -362,6 +363,15 @@ const Navbar = () => {
             )} hover:text-careersng-purple`}
           >
             Find Jobs
+          </Link>
+          <Link
+            to="/jobs"
+            onClick={() => setIsMenuOpen(false)}
+            className={`text-[17.7px] ${isActive(
+              "/jobs"
+            )} hover:text-careersng-purple`}
+          >
+            Post Job
           </Link>
           <Link
             to="/categories"
@@ -428,7 +438,7 @@ const Navbar = () => {
           <div className="flex flex-col gap-3">
             {user ? (
               <>
-                <button onClick={handleLogout} className="border-0 bg-gray-100 font-semibold p-3">Logout</button>
+                <button onClick={handleLogout}  className="border-0 bg-gray-100 font-semibold p-3">Logout</button>
               </>
             ) : (
               <div className="grid grid-cols-2 gap-5">
