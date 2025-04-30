@@ -365,10 +365,10 @@ const Navbar = () => {
             Find Jobs
           </Link>
           <Link
-            to="/jobs"
+            to="/post_job"
             onClick={() => setIsMenuOpen(false)}
             className={`text-[17.7px] ${isActive(
-              "/jobs"
+              "/post_job"
             )} hover:text-careersng-purple`}
           >
             Post Job
