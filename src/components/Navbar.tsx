@@ -138,6 +138,14 @@ const Navbar = () => {
                 Post Job
               </Link>
               <Link
+                to="/blog"
+                className={`${isActive(
+                  "/blog"
+                )} hover:text-blue-900  transition-colors`}
+              >
+                Blog
+              </Link>
+              <Link
                 to="/categories"
                 className={`${isActive(
                   "/categories"
@@ -151,16 +159,9 @@ const Navbar = () => {
                   "/how_it_works"
                 )} hover:text-blue-900   transition-colors`}
               >
-                How It Works
+                LinkedIn Optimization
               </Link>
-              <Link
-                to="/blog"
-                className={`${isActive(
-                  "/blog"
-                )} hover:text-blue-900  transition-colors`}
-              >
-                Blog
-              </Link>
+              
             </div>
           </div>
 
@@ -383,13 +384,13 @@ const Navbar = () => {
             Categories
           </Link>
           <Link
-            to="/how_it_works"
+            to="/LinkedIn-Optimization"
             onClick={() => setIsMenuOpen(false)}
             className={`text-[17.7px] ${isActive(
               "/how_it_works"
             )} hover:text-careersng-purple`}
           >
-            How It Works
+            LinkedIn Optimization
           </Link>
           <Link
             to="/blog"
